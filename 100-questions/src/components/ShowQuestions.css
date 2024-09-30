@@ -1,0 +1,38 @@
+.eachQuestion {
+  border: 1px solid white;
+  background-color: #444;
+  padding: 30px 10px;
+  min-width: 800px;
+  width: 100%;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.question {
+  background-color: #444;
+  border-radius: 5px;
+  color: white;
+  text-wrap: wrap;
+}
+
+#leftArrow{
+  width: 30px;
+  height: 30px;
+  rotate: 180deg;
+}
+
+.questionInner{
+  display: flex;
+  justify-content: space-between;
+}
+
+.answers{
+  color: white;
+  height: 30px;
+  margin: 3px;
+  margin-bottom: 0px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 2px;
+  display: none;
+}

@@ -1,11 +1,12 @@
 import "./App.css";
-import Questions from "./components/Questions";
+import ShowQuestions from "./components/ShowQuestions";
+
 
 function App() {
   return (
     <div className="main">
       <div className="mainInner">
-        < Questions />
+        < ShowQuestions />
       </div>
     </div>
   );
