@@ -1,7 +1,8 @@
 import { DefaultDeserializer } from "v8";
 import classObj from "../Data";
-import { memoryUsage } from "process";
+import { memoryUsage, stdin } from "process";
 import { kMaxLength } from "buffer";
+import { stringify } from "querystring";
 
 const subjects = () => {
   let arr: string[] = [];
@@ -944,8 +945,10 @@ export const function57 = () => {
   arr.forEach((elem) => {
     str += elem;
   });
-  return arr;
+  return str;
 };
+
+////////////
 
 export const function58 = () => {
   const classAverage = function17();
@@ -961,11 +964,826 @@ export const function58 = () => {
     }
   });
   arr.forEach((elem) => {
-    str += elem;
+    str += elem + ",";
   });
-  return arr;
+  return str;
 };
 
+////////
 
-console.log(function58());
+export const function59 = (score: number) => {
+  type obj = {
+    subject: string;
+    counter: number;
+  }[];
+  let arr: obj = [];
+
+  const totalSubjects = subjects();
+  totalSubjects.forEach((sub) => {
+    arr.push({ subject: sub, counter: 0 });
+  });
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > score) {
+        arr.forEach((elem) => {
+          if (elem.subject === element.subject) {
+            elem.counter += 1;
+          }
+        });
+      }
+    });
+  });
+  arr.sort((a, b) => a.counter - b.counter);
+  return arr[arr.length - 1].subject;
+};
+
+///////////
+
+export const function60 = (score: number) => {
+  type obj = {
+    subject: string;
+    counter: number;
+  }[];
+  let arr: obj = [];
+
+  const totalSubjects = subjects();
+  totalSubjects.forEach((sub) => {
+    arr.push({ subject: sub, counter: 0 });
+  });
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < score) {
+        arr.forEach((elem) => {
+          if (elem.subject === element.subject) {
+            elem.counter += 1;
+          }
+        });
+      }
+    });
+  });
+  arr.sort((a, b) => a.counter - b.counter);
+  return arr[arr.length - 1].subject;
+};
+
+///////////
+
+export const function61 = (score: number) => {
+  type obj = {
+    subject: string;
+    counter: number;
+  }[];
+  let arr: obj = [];
+
+  const totalSubjects = subjects();
+  totalSubjects.forEach((sub) => {
+    arr.push({ subject: sub, counter: 0 });
+  });
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > score) {
+        arr.forEach((elem) => {
+          if (elem.subject === element.subject) {
+            elem.counter += 1;
+          }
+        });
+      }
+    });
+  });
+  arr.sort((a, b) => a.counter - b.counter);
+  return arr[0].subject;
+};
+
+////////
+
+export const function62 = (score: number) => {
+  type obj = {
+    subject: string;
+    counter: number;
+  }[];
+  let arr: obj = [];
+
+  const totalSubjects = subjects();
+  totalSubjects.forEach((sub) => {
+    arr.push({ subject: sub, counter: 0 });
+  });
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < score) {
+        arr.forEach((elem) => {
+          if (elem.subject === element.subject) {
+            elem.counter += 1;
+          }
+        });
+      }
+    });
+  });
+  arr.sort((a, b) => a.counter - b.counter);
+  return arr[0].subject;
+};
+
+////////
+
+export const function63 = (subject: string) => {
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.subject === subject) {
+        if (element.mark > classAverage) {
+          counter += 1;
+        }
+      }
+    });
+  });
+  return (counter * 100) / classObj.students.length + "%";
+};
+
+////////
+
+export const function64 = (subject: string) => {
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.subject === subject) {
+        if (element.mark < classAverage) {
+          counter += 1;
+        }
+      }
+    });
+  });
+  return (counter * 100) / classObj.students.length + "%";
+};
+
+////////
+
+export const function65 = () => {
+  let mainCounter = 0;
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter >= 1) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / classObj.students.length + "%";
+};
+
+/////////
+
+export const function66 = () => {
+  let mainCounter = 0;
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter >= 1) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / classObj.students.length + "%";
+};
+
+/////////
+
+export const function67 = () => {
+  let mainCounter = 0;
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter === student.marks.length) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / classObj.students.length + "%";
+};
+
+/////////
+
+export const function68 = () => {
+  let mainCounter = 0;
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter === student.marks.length) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / classObj.students.length + "%";
+};
+
+///////////
+
+export const function69 = () => {
+  let mainCounter = 0;
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter > student.marks.length / 2) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / classObj.students.length + "%";
+};
+
+//////////
+
+export const function70 = () => {
+  let mainCounter = 0;
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter > student.marks.length / 2) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / classObj.students.length + "%";
+};
+
+/////////
+
+export const function71 = () => {
+  type obj = {
+    subject: string;
+    counter: number;
+  }[];
+  let arr: obj = [];
+
+  const classAverage = function17();
+  const totalSubjects = subjects();
+  totalSubjects.forEach((sub) => {
+    let counter = 0;
+    classObj.students.forEach((student) => {
+      student.marks.forEach((element) => {
+        if (element.subject === sub) {
+          if (element.mark > classAverage) {
+            counter += 1;
+          }
+        }
+      });
+    });
+    arr.push({ subject: sub, counter: counter });
+  });
+  arr.sort((a, b) => a.counter - b.counter);
+  return arr[arr.length - 1].subject;
+};
+
+///////
+
+export const function72 = () => {
+  type obj = {
+    subject: string;
+    counter: number;
+  }[];
+  let arr: obj = [];
+
+  const classAverage = function17();
+  const totalSubjects = subjects();
+  totalSubjects.forEach((sub) => {
+    let counter = 0;
+    classObj.students.forEach((student) => {
+      student.marks.forEach((element) => {
+        if (element.subject === sub) {
+          if (element.mark > classAverage) {
+            counter += 1;
+          }
+        }
+      });
+    });
+    arr.push({ subject: sub, counter: counter });
+  });
+  arr.sort((a, b) => a.counter - b.counter);
+  return arr[0].subject;
+};
+
+/////////
+
+export const function73 = (name: string, subject: string) => {
+  const particularAverage = function7(name);
+  let counter = 0;
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.subject === subject) {
+        if (element.mark > particularAverage) {
+          counter += 1;
+        }
+      }
+    });
+  });
+  return (counter * 100) / 4 + "%";
+};
+
+////////
+
+export const function74 = (name: string, subject: string) => {
+  const particularAverage = function7(name);
+  let counter = 0;
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.subject === subject) {
+        if (element.mark < particularAverage) {
+          counter += 1;
+        }
+      }
+    });
+  });
+  return (counter * 100) / 4 + "%";
+};
+
+////////
+
+export const function75 = (name: string) => {
+  const particularAverage = function7(name);
+  let counter = 0;
+  let mainCounter = 0;
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > particularAverage) {
+        counter += 1;
+      }
+    });
+    if (counter > 1) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / 4 + "%";
+};
+
+//////
+
+export const function76 = (name: string) => {
+  const particularAverage = function7(name);
+  let counter = 0;
+  let mainCounter = 0;
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < particularAverage) {
+        counter += 1;
+      }
+    });
+    if (counter > 1) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / 4 + "%";
+};
+
+//////
+
+export const function77 = (name: string) => {
+  const particularAverage = function7(name);
+  let counter = 0;
+  let mainCounter = 0;
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > particularAverage) {
+        counter += 1;
+      }
+    });
+    if (counter === student.marks.length) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / 4 + "%";
+};
+
+//////
+
+export const function78 = (name: string) => {
+  const particularAverage = function7(name);
+  let counter = 0;
+  let mainCounter = 0;
+
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < particularAverage) {
+        counter += 1;
+      }
+    });
+    if (counter === student.marks.length) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / 4 + "%";
+};
+
+///////
+
+export const function79 = (name: string) => {
+  let str = "";
+  const particularAverage = function7(name);
+  let arr: string[] = [];
+  const totalSubjects = subjects();
+  totalSubjects.forEach((element) => {
+    let temp = function9(element);
+    if (temp > particularAverage) {
+      arr.push(element);
+    }
+  });
+  arr.forEach((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+///////
+
+export const function80 = (name: string) => {
+  let str = "";
+  const particularAverage = function7(name);
+  let arr: string[] = [];
+  const totalSubjects = subjects();
+  totalSubjects.forEach((element) => {
+    let temp = function9(element);
+    if (temp < particularAverage) {
+      arr.push(element);
+    }
+  });
+  arr.forEach((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+////////
+
+export const function81 = (name: string) => {
+  let str = "";
+  const particularAverage = function7(name);
+  const subAverage = subjectAverage();
+  let filterdArray: string[] = [];
+  subAverage.forEach((element) => {
+    if (element.mark > particularAverage) {
+      filterdArray.push(element.subject);
+    }
+  });
+  filterdArray.map((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+///////
+
+export const function82 = (name: string) => {
+  let str = "";
+  const particularAverage = function7(name);
+  const subAverage = subjectAverage();
+  let filterdArray: string[] = [];
+  subAverage.forEach((element) => {
+    if (element.mark < particularAverage) {
+      filterdArray.push(element.subject);
+    }
+  });
+  filterdArray.map((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+/////
+
+export const function83 = (name: string) => {
+  let str = "";
+  const particularAverage = function7(name);
+  const newArray: string[] = [];
+  const subAverage = subjectAverage();
+  let filterdArray: string[] = [];
+  subAverage.forEach((element) => {
+    if (element.mark < particularAverage) {
+      filterdArray.push(element.subject);
+    }
+  });
+  subAverage.forEach((element) => {
+    if (filterdArray.includes(element.subject)) {
+      //do nothing
+    } else {
+      newArray.push(element.subject);
+    }
+  });
+  newArray.map((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+export const function84 = (name: string) => {
+  let str = "";
+  const particularAverage = function7(name);
+  const newArray: string[] = [];
+  const subAverage = subjectAverage();
+  let filterdArray: string[] = [];
+  subAverage.forEach((element) => {
+    if (element.mark > particularAverage) {
+      filterdArray.push(element.subject);
+    }
+  });
+  subAverage.forEach((element) => {
+    if (filterdArray.includes(element.subject)) {
+      //do nothing
+    } else {
+      newArray.push(element.subject);
+    }
+  });
+  newArray.map((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+////////
+
+export const function85 = (subject: string) => {
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.subject === subject) {
+        if (element.mark > classAverage) {
+          counter += 1;
+        }
+      }
+    });
+  });
+  return (counter * 100) / 4 + "%";
+};
+
+//////////
+
+export const function86 = (subject: string) => {
+  let counter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.subject === subject) {
+        if (element.mark < classAverage) {
+          counter += 1;
+        }
+      }
+    });
+  });
+  return (counter * 100) / 4 + "%";
+};
+
+//////
+
+export const function87 = () => {
+  let counter = 0;
+  let mainCounter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter >= 1) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / 4 + "%";
+};
+
+///////
+
+export const function88 = () => {
+  let counter = 0;
+  let mainCounter = 0;
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter >= 1) {
+      mainCounter += 1;
+    }
+    counter = 0;
+  });
+  return (mainCounter * 100) / 4 + "%";
+};
+
+/////////////
+
+export const function89 = () => {
+  let str = "";
+  let counter = 0;
+  let arr: string[] = [];
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter === student.marks.length) {
+      arr.push(student.name);
+    }
+    counter = 0;
+  });
+  arr.forEach((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+///////////
+
+export const function90 = () => {
+  let str = "";
+  let counter = 0;
+  let arr: string[] = [];
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark < classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter === student.marks.length) {
+      arr.push(student.name);
+    }
+    counter = 0;
+  });
+  arr.forEach((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+////////
+
+export const function91 = () => {
+  let str = "";
+  let counter = 0;
+  let arr: string[] = [];
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter >= student.marks.length / 2) {
+      arr.push(student.name);
+    }
+    counter = 0;
+  });
+  arr.forEach((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+////////
+
+export const function92 = () => {
+  let str = "";
+  let counter = 0;
+  let arr: string[] = [];
+  const classAverage = function17();
+  classObj.students.forEach((student) => {
+    student.marks.forEach((element) => {
+      if (element.mark > classAverage) {
+        counter += 1;
+      }
+    });
+    if (counter <= student.marks.length / 2) {
+      arr.push(student.name);
+    }
+    counter = 0;
+  });
+  arr.forEach((element) => {
+    str += element + ",";
+  });
+  return str;
+};
+
+////////
+
+export const function93 = () => {
+  const ans = function15();
+  return ans;
+};
+
+//////
+
+export const function94 = () => {
+  const ans = function16();
+  return ans;
+};
+
+//////////
+
+export const function95 = (name: string) => {
+  let sum = 0;
+  let arr: string[] = [];
+  const totalSubjects = subjects();
+  totalSubjects.forEach((element) => {
+    let temp = function73(name, element);
+    let charToRemove = "%";
+    let newStr = temp.replace(charToRemove, "");
+    arr.push(newStr);
+  });
+  arr.map((element) => {
+    sum += Number(element);
+  });
+  return sum / 4 + "%";
+};
+
+////////
+
+export const function96 = (name: string) => {
+  let sum = 0;
+  let arr: string[] = [];
+  const totalSubjects = subjects();
+  totalSubjects.forEach((element) => {
+    let temp = function74(name, element);
+    let charToRemove = "%";
+    let newStr = temp.replace(charToRemove, "");
+    arr.push(newStr);
+  });
+  arr.map((element) => {
+    sum += Number(element);
+  });
+  return sum / 4 + "%";
+};
+
+////////
+
+export const function97 = (name: string) => {
+  const ans = function95(name);
+  return ans;
+};
+
+//////
+
+export const function98 = (name: string) => {
+  const ans = function96(name);
+  return ans;
+};
+
+///////
+
+export const function99 = (name:string) => {
+  const ans = function81(name);
+  return ans;
+}
+
+//////
+
+export const function100 = (name:string) => {
+  const ans = function82(name);
+  return ans;
+}
 
