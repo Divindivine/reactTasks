@@ -1,8 +1,4 @@
-import { DefaultDeserializer } from "v8";
-import classObj from "../Data";
-import { memoryUsage, stdin } from "process";
-import { kMaxLength } from "buffer";
-import { stringify } from "querystring";
+import classObj from "../datas/Data";
 
 const subjects = () => {
   let arr: string[] = [];
@@ -1775,15 +1771,14 @@ export const function98 = (name: string) => {
 
 ///////
 
-export const function99 = (name:string) => {
+export const function99 = (name: string) => {
   const ans = function81(name);
   return ans;
-}
+};
 
 //////
 
-export const function100 = (name:string) => {
+export const function100 = (name: string) => {
   const ans = function82(name);
   return ans;
-}
-
+};
