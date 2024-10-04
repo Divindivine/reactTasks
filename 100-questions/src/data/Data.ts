@@ -50,6 +50,3 @@ const classObj = {
 };
 
 export default classObj;
-
-
-

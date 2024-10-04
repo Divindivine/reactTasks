@@ -1,5 +1,5 @@
 import "./App.css";
-import ShowQuestions from "./components/ShowQuestions";
+import ShowQuestions from "./page/ShowQuestions";
 
 
 function App() {

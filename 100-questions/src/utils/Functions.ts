@@ -1,4 +1,4 @@
-import classObj from "../datas/Data";
+import classObj from "../data/Data";
 
 const subjects = () => {
   let arr: string[] = [];
@@ -40,19 +40,31 @@ const studentTotalMark = () => {
 };
 //////////////
 
-export const function1 = () => {
+export const function1 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   return classObj.name;
 };
 
 ///////////
 
-export const function2 = () => {
+export const function2 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   return classObj.teacherName;
 };
 
 /////////////
 
-export const function3 = () => {
+export const function3 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let names = "";
   let nameArr = students();
   nameArr.forEach((name) => {
@@ -63,7 +75,11 @@ export const function3 = () => {
 
 ////////////
 
-export const function4 = () => {
+export const function4 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let id = "";
   classObj.students.map((student) => {
     id += student.id + ",";
@@ -73,10 +89,14 @@ export const function4 = () => {
 
 /////////
 
-export const function5 = (expName: string) => {
+export const function5 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let subject = "";
   classObj.students.map((student) => {
-    if (student.name === expName) {
+    if (student.name === studentName) {
       student.marks.forEach((obj) => {
         subject += obj.subject + ",";
       });
@@ -87,10 +107,14 @@ export const function5 = (expName: string) => {
 
 /////////////
 
-export const function6 = (expName: string) => {
+export const function6 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let result = "";
   classObj.students.map((student) => {
-    if (student.name === expName) {
+    if (student.name === studentName) {
       student.marks.forEach((obj) => {
         result += obj.subject + ":" + obj.mark + ",";
       });
@@ -101,12 +125,16 @@ export const function6 = (expName: string) => {
 
 /////////
 
-export const function7 = (expName: string) => {
+export const function7 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mark = 0;
   let index = 0;
   let result = 0;
   classObj.students.map((student) => {
-    if (student.name === expName) {
+    if (student.name === studentName) {
       student.marks.forEach((obj) => {
         mark += obj.mark;
         index = index + 1;
@@ -119,10 +147,14 @@ export const function7 = (expName: string) => {
 
 ////////
 
-export const function8 = (expName: string) => {
+export const function8 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mark = 0;
   classObj.students.map((student) => {
-    if (student.name === expName) {
+    if (student.name === studentName) {
       student.marks.forEach((obj) => {
         mark += obj.mark;
       });
@@ -133,13 +165,17 @@ export const function8 = (expName: string) => {
 
 /////////
 
-export const function9 = (expSubject: string) => {
+export const function9 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mark = 0;
   let number = 0;
   let result = 0;
   classObj.students.map((student) => {
     student.marks.map((obj) => {
-      if (obj.subject === expSubject) {
+      if (obj.subject === subjectName) {
         mark += obj.mark;
         number += 1;
       }
@@ -151,11 +187,15 @@ export const function9 = (expSubject: string) => {
 
 ////////
 
-export const function10 = (expSubject: string) => {
+export const function10 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mark = 0;
   classObj.students.map((student) => {
     student.marks.map((obj) => {
-      if (obj.subject === expSubject) {
+      if (obj.subject === subjectName) {
         mark += obj.mark;
       }
     });
@@ -165,13 +205,17 @@ export const function10 = (expSubject: string) => {
 
 ///////////
 
-export const function11 = (expSubject: string) => {
+export const function11 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let prevmark = 0;
   let newmark = 0;
   let name = "";
   classObj.students.map((student) => {
     student.marks.map((obj) => {
-      if (obj.subject === expSubject) {
+      if (obj.subject === subjectName) {
         prevmark = obj.mark;
         if (newmark < prevmark) {
           newmark = prevmark;
@@ -185,13 +229,17 @@ export const function11 = (expSubject: string) => {
 
 //////
 
-export const function12 = (expSubject: string) => {
+export const function12 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let prevmark = 0;
   let newmark = 0;
   let name = "";
   classObj.students.map((student) => {
     student.marks.map((obj) => {
-      if (obj.subject === expSubject) {
+      if (obj.subject === subjectName) {
         prevmark = obj.mark;
         if (newmark === 0) {
           newmark = prevmark;
@@ -209,7 +257,11 @@ export const function12 = (expSubject: string) => {
 
 ////////
 
-const markSortStudent = () => {
+const markSortStudent = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     mark: number;
     name: string;
@@ -217,7 +269,7 @@ const markSortStudent = () => {
 
   let arr: obj = [];
   classObj.students.map((student) => {
-    let mark = function8(student.name);
+    let mark = function8(student.name, subjectName, markScored);
     let name = student.name;
     let item = { mark: mark, name: name };
     arr.push(item);
@@ -228,15 +280,23 @@ const markSortStudent = () => {
 
 /////
 
-export const function13 = () => {
-  let data = markSortStudent();
+export const function13 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let data = markSortStudent(studentName, subjectName, markScored);
   return data[data.length - 1].name;
 };
 
 ///////
 
-export const function14 = () => {
-  let data = markSortStudent();
+export const function14 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let data = markSortStudent(studentName, subjectName, markScored);
   return data[0].name;
 };
 
@@ -265,14 +325,22 @@ const subjectAverage = () => {
 
 /////////
 
-export const function15 = () => {
+export const function15 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = subjectAverage();
   return arr[arr.length - 1].subject;
 };
 
 /////////
 
-export const function16 = () => {
+export const function16 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = subjectAverage();
   return arr[0].subject;
 };
@@ -308,7 +376,11 @@ const getTotalMarksBySubject = () => {
 
 ////////////
 
-export const function17 = () => {
+export const function17 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = getTotalMarksBySubject();
   let totalSubjects = subjects();
   let total = 0;
@@ -321,7 +393,11 @@ export const function17 = () => {
 
 /////////////////
 
-export const function18 = () => {
+export const function18 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = getTotalMarksBySubject();
   let total = 0;
   arr.forEach((element) => {
@@ -332,7 +408,11 @@ export const function18 = () => {
 
 ///////
 
-export const function19 = () => {
+export const function19 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let string = "";
   let obj = subjectAverage();
   obj.forEach((element) => {
@@ -343,7 +423,11 @@ export const function19 = () => {
 
 ///////
 
-export const function20 = () => {
+export const function20 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let string = "";
   let obj = getTotalMarksBySubject();
   obj.forEach((element) => {
@@ -354,14 +438,22 @@ export const function20 = () => {
 
 //////////
 
-export const function21 = () => {
+export const function21 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = getTotalMarksBySubject();
   return arr[arr.length - 1].subject;
 };
 
 /////////
 
-export const function22 = () => {
+export const function22 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = getTotalMarksBySubject();
   return arr[0].subject;
 };
@@ -388,40 +480,60 @@ const averageMarkStudent = () => {
 
 //////////
 
-export const function23 = () => {
+export const function23 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   const arr = averageMarkStudent();
   return arr[arr.length - 1].name;
 };
 
 ////////
 
-export const function24 = () => {
+export const function24 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   const arr = averageMarkStudent();
   return arr[0].name;
 };
 
 ////////
 
-export const function25 = () => {
+export const function25 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   const arr = studentTotalMark();
   return arr[arr.length - 1].name;
 };
 
 ////
 
-export const function26 = () => {
+export const function26 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   const arr = studentTotalMark();
   return arr[0].name;
 };
 
 //////
 
-export const function27 = (subject: string, mark: number) => {
+export const function27 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
-        if (element.mark > mark) {
+      if (element.subject === subjectName) {
+        if (element.mark > markScored) {
           counter += 1;
         }
       }
@@ -432,12 +544,16 @@ export const function27 = (subject: string, mark: number) => {
 
 ////////
 
-export const function28 = (subject: string, mark: number) => {
+export const function28 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
-        if (element.mark < mark) {
+      if (element.subject === subjectName) {
+        if (element.mark < markScored) {
           counter += 1;
         }
       }
@@ -448,12 +564,16 @@ export const function28 = (subject: string, mark: number) => {
 
 ////////
 
-export const function29 = (mark: number) => {
+export const function29 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
   let incr = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.mark > mark) {
+      if (element.mark > markScored) {
         counter = 1;
       } else {
         counter = 0;
@@ -468,12 +588,16 @@ export const function29 = (mark: number) => {
 
 ///////
 
-export const function30 = (mark: number) => {
+export const function30 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
   let incr = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.mark < mark) {
+      if (element.mark < markScored) {
         counter = 1;
       } else {
         counter = 0;
@@ -488,39 +612,59 @@ export const function30 = (mark: number) => {
 
 ////////
 
-export const function31 = (subject: string, mark: number) => {
-  let num = function27(subject, mark);
+export const function31 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let num = function27(studentName, subjectName, markScored);
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
 /////////
 
-export const function32 = (subject: string, mark: number) => {
-  let num = function28(subject, mark);
+export const function32 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let num = function28(studentName, subjectName, markScored);
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
 ////////
 
-export const function33 = (mark: number) => {
-  let num = function29(mark);
+export const function33 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let num = function29(studentName, subjectName, markScored);
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
 ///////////
 
-export const function34 = (mark: number) => {
-  let num = function30(mark);
+export const function34 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let num = function30(studentName, subjectName, markScored);
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
 //////////////
 
-export const function35 = () => {
+export const function35 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = studentTotalMark();
   return `${arr[arr.length - 1].name}: ${
     (arr[arr.length - 1].total * 100) / 250
@@ -529,14 +673,22 @@ export const function35 = () => {
 
 /////////////
 
-export const function36 = () => {
+export const function36 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = studentTotalMark();
   return `${arr[0].name}: ${(arr[0].total * 100) / 250}%`;
 };
 
 ////////
 
-export const function37 = () => {
+export const function37 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = getTotalMarksBySubject();
   return `${arr[arr.length - 1].subject}: ${
     (arr[arr.length - 1].mark * 100) / 200
@@ -545,20 +697,28 @@ export const function37 = () => {
 
 ///////////
 
-export const function38 = () => {
+export const function38 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let arr = getTotalMarksBySubject();
   return `${arr[0].subject}: ${(arr[0].mark * 100) / 200}%`;
 };
 
 /////
 
-export const function39 = (subject: string) => {
-  let name = function11(subject);
+export const function39 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let name = function11(studentName, subjectName, markScored);
   let mark = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (student.name === name) {
-        if (element.subject === subject) {
+        if (element.subject === subjectName) {
           mark = element.mark;
         }
       }
@@ -569,13 +729,17 @@ export const function39 = (subject: string) => {
 
 ///////
 
-export const function40 = (subject: string) => {
-  let name = function12(subject);
+export const function40 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  let name = function12(studentName, subjectName, markScored);
   let mark = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (student.name === name) {
-        if (element.subject === subject) {
+        if (element.subject === subjectName) {
           mark = element.mark;
         }
       }
@@ -586,13 +750,17 @@ export const function40 = (subject: string) => {
 
 ///////////
 
-export const function41 = (name: string) => {
+export const function41 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let prev = 0;
   let curr = 0;
   let sub = "";
 
   classObj.students.forEach((student) => {
-    if (student.name === name) {
+    if (student.name === studentName) {
       student.marks.forEach((element) => {
         curr = element.mark;
         if (prev < curr) {
@@ -607,13 +775,17 @@ export const function41 = (name: string) => {
 
 ////////////////
 
-export const function42 = (name: string) => {
+export const function42 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let prev = 0;
   let curr = 0;
   let sub = "";
 
   classObj.students.forEach((student) => {
-    if (student.name === name) {
+    if (student.name === studentName) {
       student.marks.forEach((element) => {
         curr = element.mark;
         if (prev > curr) {
@@ -632,7 +804,11 @@ export const function42 = (name: string) => {
 
 ///////////
 
-export const function43 = (mark: number) => {
+export const function43 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let filteredSubs = "";
   let subs = subjects();
   subs.forEach((sub) => {
@@ -640,7 +816,7 @@ export const function43 = (mark: number) => {
     classObj.students.forEach((student) => {
       student.marks.forEach((element) => {
         if (sub === element.subject) {
-          if (element.mark < mark) {
+          if (element.mark < markScored) {
             flag = 1;
           }
         }
@@ -655,7 +831,11 @@ export const function43 = (mark: number) => {
 
 //////////////////
 
-export const function44 = (mark: number) => {
+export const function44 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let filteredSubs = "";
   let subs = subjects();
   subs.forEach((sub) => {
@@ -663,7 +843,7 @@ export const function44 = (mark: number) => {
     classObj.students.forEach((student) => {
       student.marks.forEach((element) => {
         if (sub === element.subject) {
-          if (element.mark > mark) {
+          if (element.mark > markScored) {
             flag = 1;
           }
         }
@@ -678,14 +858,18 @@ export const function44 = (mark: number) => {
 
 ////////////
 
-export const function45 = (mark: number) => {
+export const function45 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let filterdSubs = "";
   let flag = 0;
   let studentAverage = averageMarkStudent();
   let subs = subjects();
   subs.forEach((subject) => {
     studentAverage.forEach((elem) => {
-      if (elem.average < mark) {
+      if (elem.average < markScored) {
         flag = 1;
       }
     });
@@ -698,14 +882,18 @@ export const function45 = (mark: number) => {
 
 ///////////
 
-export const function46 = (mark: number) => {
+export const function46 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let filterdSubs = "";
   let flag = 0;
   let studentAverage = averageMarkStudent();
   let subs = subjects();
   subs.forEach((subject) => {
     studentAverage.forEach((elem) => {
-      if (elem.average > mark) {
+      if (elem.average > markScored) {
         flag = 1;
       }
     });
@@ -719,13 +907,17 @@ export const function46 = (mark: number) => {
 
 ///////////////
 
-export const function47 = () => {
+export const function47 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let names = "";
   const totalSubjects = subjects();
   let arr: string[] = [];
   let temp = "";
   totalSubjects.forEach((subject) => {
-    temp = function11(subject);
+    temp = function11(studentName, subject, markScored);
     arr.push(temp);
   });
   const filtered = arr.filter(
@@ -739,13 +931,17 @@ export const function47 = () => {
 
 /////////////
 
-export const function48 = () => {
+export const function48 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let names = "";
   const totalSubjects = subjects();
   let arr: string[] = [];
   let temp = "";
   totalSubjects.forEach((subject) => {
-    temp = function12(subject);
+    temp = function12(studentName, subject, markScored);
     arr.push(temp);
   });
   const filtered = arr.filter(
@@ -759,7 +955,11 @@ export const function48 = () => {
 
 //////////////
 
-export const function49 = () => {
+export const function49 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   type obj = {
     name: string;
@@ -787,7 +987,11 @@ export const function49 = () => {
 
 /////////////
 
-export const function50 = () => {
+export const function50 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   type obj = {
     name: string;
@@ -813,13 +1017,17 @@ export const function50 = () => {
 
 ///////////
 
-export const function51 = () => {
+export const function51 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
     let temp = element + ":" + " ";
-    temp += function11(element);
+    temp += function11(studentName, element, markScored);
     arr.push(temp);
   });
   arr.forEach((element) => {
@@ -830,13 +1038,17 @@ export const function51 = () => {
 
 //////////
 
-export const function52 = () => {
+export const function52 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
     let temp = element + ":" + " ";
-    temp += function12(element);
+    temp += function12(studentName, element, markScored);
     arr.push(temp);
   });
   arr.forEach((element) => {
@@ -847,7 +1059,11 @@ export const function52 = () => {
 
 ///////
 
-export const function53 = () => {
+export const function53 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let prev = 0;
   let curr = 0;
   let sub = "";
@@ -865,7 +1081,11 @@ export const function53 = () => {
 
 //////
 
-export const function54 = () => {
+export const function54 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let prev = 0;
   let curr = 0;
   let sub = "";
@@ -887,13 +1107,17 @@ export const function54 = () => {
 
 ///////////
 
-export const function55 = () => {
-  const classAverage = function17();
+export const function55 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const classAverage = function17(studentName, subjectName, markScored);
   const totalStudents = students();
   let str = "";
   let arr: string[] = [];
   totalStudents.forEach((student) => {
-    let temp = function7(student);
+    let temp = function7(student, subjectName, markScored);
     if (temp > classAverage) {
       arr.push(student);
     }
@@ -906,13 +1130,17 @@ export const function55 = () => {
 
 ///////
 
-export const function56 = () => {
-  const classAverage = function17();
+export const function56 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const classAverage = function17(studentName, subjectName, markScored);
   const totalStudents = students();
   let str = "";
   let arr: string[] = [];
   totalStudents.forEach((student) => {
-    let temp = function7(student);
+    let temp = function7(student, subjectName, markScored);
     if (temp < classAverage) {
       arr.push(student);
     }
@@ -925,15 +1153,19 @@ export const function56 = () => {
 
 //////
 
-export const function57 = () => {
-  const classAverage = function17();
+export const function57 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const classAverage = function17(studentName, subjectName, markScored);
   const totalSubs = subjects();
 
   let str = "";
   let arr: string[] = [];
 
   totalSubs.forEach((sub) => {
-    let temp = function9(sub);
+    let temp = function9(studentName, sub, markScored);
     if (temp > classAverage) {
       arr.push(sub);
     }
@@ -946,15 +1178,19 @@ export const function57 = () => {
 
 ////////////
 
-export const function58 = () => {
-  const classAverage = function17();
+export const function58 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const classAverage = function17(studentName, subjectName, markScored);
   const totalSubs = subjects();
 
   let str = "";
   let arr: string[] = [];
 
   totalSubs.forEach((sub) => {
-    let temp = function9(sub);
+    let temp = function9(studentName, sub, markScored);
     if (temp < classAverage) {
       arr.push(sub);
     }
@@ -967,7 +1203,11 @@ export const function58 = () => {
 
 ////////
 
-export const function59 = (score: number) => {
+export const function59 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     subject: string;
     counter: number;
@@ -981,7 +1221,7 @@ export const function59 = (score: number) => {
 
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.mark > score) {
+      if (element.mark > markScored) {
         arr.forEach((elem) => {
           if (elem.subject === element.subject) {
             elem.counter += 1;
@@ -996,7 +1236,11 @@ export const function59 = (score: number) => {
 
 ///////////
 
-export const function60 = (score: number) => {
+export const function60 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     subject: string;
     counter: number;
@@ -1010,7 +1254,7 @@ export const function60 = (score: number) => {
 
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.mark < score) {
+      if (element.mark < markScored) {
         arr.forEach((elem) => {
           if (elem.subject === element.subject) {
             elem.counter += 1;
@@ -1025,7 +1269,11 @@ export const function60 = (score: number) => {
 
 ///////////
 
-export const function61 = (score: number) => {
+export const function61 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     subject: string;
     counter: number;
@@ -1039,7 +1287,7 @@ export const function61 = (score: number) => {
 
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.mark > score) {
+      if (element.mark > markScored) {
         arr.forEach((elem) => {
           if (elem.subject === element.subject) {
             elem.counter += 1;
@@ -1054,7 +1302,11 @@ export const function61 = (score: number) => {
 
 ////////
 
-export const function62 = (score: number) => {
+export const function62 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     subject: string;
     counter: number;
@@ -1068,7 +1320,7 @@ export const function62 = (score: number) => {
 
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.mark < score) {
+      if (element.mark < markScored) {
         arr.forEach((elem) => {
           if (elem.subject === element.subject) {
             elem.counter += 1;
@@ -1083,12 +1335,16 @@ export const function62 = (score: number) => {
 
 ////////
 
-export const function63 = (subject: string) => {
+export const function63 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
+      if (element.subject === subjectName) {
         if (element.mark > classAverage) {
           counter += 1;
         }
@@ -1100,12 +1356,16 @@ export const function63 = (subject: string) => {
 
 ////////
 
-export const function64 = (subject: string) => {
+export const function64 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
+      if (element.subject === subjectName) {
         if (element.mark < classAverage) {
           counter += 1;
         }
@@ -1117,10 +1377,14 @@ export const function64 = (subject: string) => {
 
 ////////
 
-export const function65 = () => {
+export const function65 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1137,10 +1401,14 @@ export const function65 = () => {
 
 /////////
 
-export const function66 = () => {
+export const function66 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1157,10 +1425,14 @@ export const function66 = () => {
 
 /////////
 
-export const function67 = () => {
+export const function67 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1177,10 +1449,14 @@ export const function67 = () => {
 
 /////////
 
-export const function68 = () => {
+export const function68 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1197,10 +1473,14 @@ export const function68 = () => {
 
 ///////////
 
-export const function69 = () => {
+export const function69 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1217,10 +1497,14 @@ export const function69 = () => {
 
 //////////
 
-export const function70 = () => {
+export const function70 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1237,14 +1521,18 @@ export const function70 = () => {
 
 /////////
 
-export const function71 = () => {
+export const function71 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     subject: string;
     counter: number;
   }[];
   let arr: obj = [];
 
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   const totalSubjects = subjects();
   totalSubjects.forEach((sub) => {
     let counter = 0;
@@ -1265,14 +1553,18 @@ export const function71 = () => {
 
 ///////
 
-export const function72 = () => {
+export const function72 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   type obj = {
     subject: string;
     counter: number;
   }[];
   let arr: obj = [];
 
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   const totalSubjects = subjects();
   totalSubjects.forEach((sub) => {
     let counter = 0;
@@ -1293,13 +1585,17 @@ export const function72 = () => {
 
 /////////
 
-export const function73 = (name: string, subject: string) => {
-  const particularAverage = function7(name);
+export const function73 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const particularAverage = function7(studentName, subjectName, markScored);
   let counter = 0;
 
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
+      if (element.subject === subjectName) {
         if (element.mark > particularAverage) {
           counter += 1;
         }
@@ -1311,13 +1607,17 @@ export const function73 = (name: string, subject: string) => {
 
 ////////
 
-export const function74 = (name: string, subject: string) => {
-  const particularAverage = function7(name);
+export const function74 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const particularAverage = function7(studentName, subjectName, markScored);
   let counter = 0;
 
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
+      if (element.subject === subjectName) {
         if (element.mark < particularAverage) {
           counter += 1;
         }
@@ -1329,8 +1629,12 @@ export const function74 = (name: string, subject: string) => {
 
 ////////
 
-export const function75 = (name: string) => {
-  const particularAverage = function7(name);
+export const function75 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const particularAverage = function7(studentName, subjectName, markScored);
   let counter = 0;
   let mainCounter = 0;
 
@@ -1350,8 +1654,12 @@ export const function75 = (name: string) => {
 
 //////
 
-export const function76 = (name: string) => {
-  const particularAverage = function7(name);
+export const function76 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const particularAverage = function7(studentName, subjectName, markScored);
   let counter = 0;
   let mainCounter = 0;
 
@@ -1371,8 +1679,12 @@ export const function76 = (name: string) => {
 
 //////
 
-export const function77 = (name: string) => {
-  const particularAverage = function7(name);
+export const function77 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const particularAverage = function7(studentName, subjectName, markScored);
   let counter = 0;
   let mainCounter = 0;
 
@@ -1392,8 +1704,12 @@ export const function77 = (name: string) => {
 
 //////
 
-export const function78 = (name: string) => {
-  const particularAverage = function7(name);
+export const function78 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const particularAverage = function7(studentName, subjectName, markScored);
   let counter = 0;
   let mainCounter = 0;
 
@@ -1413,13 +1729,17 @@ export const function78 = (name: string) => {
 
 ///////
 
-export const function79 = (name: string) => {
+export const function79 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
-  const particularAverage = function7(name);
+  const particularAverage = function7(studentName, subjectName, markScored);
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function9(element);
+    let temp = function9(studentName, element, markScored);
     if (temp > particularAverage) {
       arr.push(element);
     }
@@ -1432,13 +1752,17 @@ export const function79 = (name: string) => {
 
 ///////
 
-export const function80 = (name: string) => {
+export const function80 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
-  const particularAverage = function7(name);
+  const particularAverage = function7(studentName, subjectName, markScored);
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function9(element);
+    let temp = function9(studentName, element, markScored);
     if (temp < particularAverage) {
       arr.push(element);
     }
@@ -1451,9 +1775,13 @@ export const function80 = (name: string) => {
 
 ////////
 
-export const function81 = (name: string) => {
+export const function81 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
-  const particularAverage = function7(name);
+  const particularAverage = function7(studentName, subjectName, markScored);
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
   subAverage.forEach((element) => {
@@ -1469,9 +1797,13 @@ export const function81 = (name: string) => {
 
 ///////
 
-export const function82 = (name: string) => {
+export const function82 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
-  const particularAverage = function7(name);
+  const particularAverage = function7(studentName, subjectName, markScored);
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
   subAverage.forEach((element) => {
@@ -1487,9 +1819,13 @@ export const function82 = (name: string) => {
 
 /////
 
-export const function83 = (name: string) => {
+export const function83 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
-  const particularAverage = function7(name);
+  const particularAverage = function7(studentName, subjectName, markScored);
   const newArray: string[] = [];
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
@@ -1511,9 +1847,13 @@ export const function83 = (name: string) => {
   return str;
 };
 
-export const function84 = (name: string) => {
+export const function84 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
-  const particularAverage = function7(name);
+  const particularAverage = function7(studentName, subjectName, markScored);
   const newArray: string[] = [];
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
@@ -1537,12 +1877,16 @@ export const function84 = (name: string) => {
 
 ////////
 
-export const function85 = (subject: string) => {
+export const function85 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
+      if (element.subject === subjectName) {
         if (element.mark > classAverage) {
           counter += 1;
         }
@@ -1554,12 +1898,16 @@ export const function85 = (subject: string) => {
 
 //////////
 
-export const function86 = (subject: string) => {
+export const function86 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
-      if (element.subject === subject) {
+      if (element.subject === subjectName) {
         if (element.mark < classAverage) {
           counter += 1;
         }
@@ -1571,10 +1919,14 @@ export const function86 = (subject: string) => {
 
 //////
 
-export const function87 = () => {
+export const function87 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
   let mainCounter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1591,10 +1943,14 @@ export const function87 = () => {
 
 ///////
 
-export const function88 = () => {
+export const function88 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let counter = 0;
   let mainCounter = 0;
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1611,11 +1967,15 @@ export const function88 = () => {
 
 /////////////
 
-export const function89 = () => {
+export const function89 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1635,11 +1995,15 @@ export const function89 = () => {
 
 ///////////
 
-export const function90 = () => {
+export const function90 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1659,11 +2023,15 @@ export const function90 = () => {
 
 ////////
 
-export const function91 = () => {
+export const function91 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1683,11 +2051,15 @@ export const function91 = () => {
 
 ////////
 
-export const function92 = () => {
+export const function92 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17();
+  const classAverage = function17(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1707,26 +2079,38 @@ export const function92 = () => {
 
 ////////
 
-export const function93 = () => {
-  const ans = function15();
+export const function93 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const ans = function15(studentName, subjectName, markScored);
   return ans;
 };
 
 //////
 
-export const function94 = () => {
-  const ans = function16();
+export const function94 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const ans = function16(studentName, subjectName, markScored);
   return ans;
 };
 
 //////////
 
-export const function95 = (name: string) => {
+export const function95 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let sum = 0;
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function73(name, element);
+    let temp = function73(studentName, element, markScored);
     let charToRemove = "%";
     let newStr = temp.replace(charToRemove, "");
     arr.push(newStr);
@@ -1739,12 +2123,16 @@ export const function95 = (name: string) => {
 
 ////////
 
-export const function96 = (name: string) => {
+export const function96 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
   let sum = 0;
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function74(name, element);
+    let temp = function74(studentName, element, markScored);
     let charToRemove = "%";
     let newStr = temp.replace(charToRemove, "");
     arr.push(newStr);
@@ -1757,28 +2145,44 @@ export const function96 = (name: string) => {
 
 ////////
 
-export const function97 = (name: string) => {
-  const ans = function95(name);
+export const function97 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const ans = function95(studentName, subjectName, markScored);
   return ans;
 };
 
 //////
 
-export const function98 = (name: string) => {
-  const ans = function96(name);
+export const function98 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const ans = function96(studentName, subjectName, markScored);
   return ans;
 };
 
 ///////
 
-export const function99 = (name: string) => {
-  const ans = function81(name);
+export const function99 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const ans = function81(studentName, subjectName, markScored);
   return ans;
 };
 
 //////
 
-export const function100 = (name: string) => {
-  const ans = function82(name);
+export const function100 = (
+  studentName: string,
+  subjectName: string,
+  markScored: number
+) => {
+  const ans = function82(studentName, subjectName, markScored);
   return ans;
 };

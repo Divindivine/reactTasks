@@ -15,25 +15,25 @@
   text-wrap: wrap;
 }
 
-#leftArrow{
+#leftArrow {
   width: 30px;
   height: 30px;
   rotate: 180deg;
 }
 
-.questionInner{
+.questionInner {
   display: flex;
   justify-content: space-between;
 }
 
-.forSelect{
+.forSelect {
   display: flex;
   width: 100%;
   justify-content: flex-start;
   gap: 30px;
 }
 
-.answers{
+.answers {
   color: white;
   height: 30px;
   margin: 3px;
