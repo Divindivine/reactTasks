@@ -8,8 +8,6 @@ const subjects = () => {
   return arr;
 };
 
-//////////////
-
 const students = () => {
   let arr: string[] = [];
   classObj.students.map((student) => {
@@ -17,8 +15,6 @@ const students = () => {
   });
   return arr;
 };
-
-////////////////
 
 const studentTotalMark = () => {
   type obje = {
@@ -38,9 +34,8 @@ const studentTotalMark = () => {
   arr.sort((a, b) => a.total - b.total);
   return arr;
 };
-//////////////
 
-export const function1 = (
+export const getClassName = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -48,9 +43,7 @@ export const function1 = (
   return classObj.name;
 };
 
-///////////
-
-export const function2 = (
+export const getTeachersName = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -58,9 +51,7 @@ export const function2 = (
   return classObj.teacherName;
 };
 
-/////////////
-
-export const function3 = (
+export const getStudentsNames = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -73,9 +64,7 @@ export const function3 = (
   return names;
 };
 
-////////////
-
-export const function4 = (
+export const getStudentId = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -87,9 +76,7 @@ export const function4 = (
   return id;
 };
 
-/////////
-
-export const function5 = (
+export const getSubjectOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -105,9 +92,7 @@ export const function5 = (
   return subject;
 };
 
-/////////////
-
-export const function6 = (
+export const getStudentMarks = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -123,9 +108,7 @@ export const function6 = (
   return result;
 };
 
-/////////
-
-export const function7 = (
+export const getStudentAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -145,9 +128,7 @@ export const function7 = (
   return result;
 };
 
-////////
-
-export const function8 = (
+export const getStudentTotalMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -163,9 +144,7 @@ export const function8 = (
   return mark;
 };
 
-/////////
-
-export const function9 = (
+export const getAverageOfSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -185,9 +164,7 @@ export const function9 = (
   return result;
 };
 
-////////
-
-export const function10 = (
+export const getSubjectTotalMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -203,9 +180,7 @@ export const function10 = (
   return mark;
 };
 
-///////////
-
-export const function11 = (
+export const getHighestMarkInSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -227,9 +202,7 @@ export const function11 = (
   return name;
 };
 
-//////
-
-export const function12 = (
+export const getLowestMarkInSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -255,8 +228,6 @@ export const function12 = (
   return name;
 };
 
-////////
-
 const markSortStudent = (
   studentName: string,
   subjectName: string,
@@ -269,7 +240,7 @@ const markSortStudent = (
 
   let arr: obj = [];
   classObj.students.map((student) => {
-    let mark = function8(student.name, subjectName, markScored);
+    let mark = getStudentTotalMark(student.name, subjectName, markScored);
     let name = student.name;
     let item = { mark: mark, name: name };
     arr.push(item);
@@ -278,9 +249,7 @@ const markSortStudent = (
   return arr;
 };
 
-/////
-
-export const function13 = (
+export const getBestStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -289,9 +258,7 @@ export const function13 = (
   return data[data.length - 1].name;
 };
 
-///////
-
-export const function14 = (
+export const getWorstStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -299,8 +266,6 @@ export const function14 = (
   let data = markSortStudent(studentName, subjectName, markScored);
   return data[0].name;
 };
-
-///////
 
 const subjectAverage = () => {
   let arr = getTotalMarksBySubject();
@@ -321,11 +286,7 @@ const subjectAverage = () => {
   return newArr;
 };
 
-////////
-
-/////////
-
-export const function15 = (
+export const getHighAverageSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -334,9 +295,7 @@ export const function15 = (
   return arr[arr.length - 1].subject;
 };
 
-/////////
-
-export const function16 = (
+export const getLowAverageSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -344,8 +303,6 @@ export const function16 = (
   let arr = subjectAverage();
   return arr[0].subject;
 };
-
-////////
 
 const getTotalMarksBySubject = () => {
   type subjectMark = {
@@ -374,9 +331,7 @@ const getTotalMarksBySubject = () => {
   return arr;
 };
 
-////////////
-
-export const function17 = (
+export const getClassAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -391,9 +346,7 @@ export const function17 = (
   return total / (classObj.students.length * totalSubjects.length);
 };
 
-/////////////////
-
-export const function18 = (
+export const getClassTotalMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -406,9 +359,7 @@ export const function18 = (
   return total;
 };
 
-///////
-
-export const function19 = (
+export const getAverageOfEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -421,9 +372,7 @@ export const function19 = (
   return string;
 };
 
-///////
-
-export const function20 = (
+export const getTotalMarkOfEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -436,9 +385,7 @@ export const function20 = (
   return string;
 };
 
-//////////
-
-export const function21 = (
+export const getSubjectWithHighestMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -447,9 +394,7 @@ export const function21 = (
   return arr[arr.length - 1].subject;
 };
 
-/////////
-
-export const function22 = (
+export const getSubjectWithLowestMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -457,8 +402,6 @@ export const function22 = (
   let arr = getTotalMarksBySubject();
   return arr[0].subject;
 };
-
-///////
 
 const averageMarkStudent = () => {
   type obj = {
@@ -478,9 +421,7 @@ const averageMarkStudent = () => {
   return arr;
 };
 
-//////////
-
-export const function23 = (
+export const getHighestAverageOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -489,9 +430,7 @@ export const function23 = (
   return arr[arr.length - 1].name;
 };
 
-////////
-
-export const function24 = (
+export const getLowesAverageOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -500,9 +439,7 @@ export const function24 = (
   return arr[0].name;
 };
 
-////////
-
-export const function25 = (
+export const getHighestMarkStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -511,9 +448,7 @@ export const function25 = (
   return arr[arr.length - 1].name;
 };
 
-////
-
-export const function26 = (
+export const getLowestMarkStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -522,9 +457,7 @@ export const function26 = (
   return arr[0].name;
 };
 
-//////
-
-export const function27 = (
+export const getStudentAboveCertainMarkInSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -542,9 +475,7 @@ export const function27 = (
   return counter;
 };
 
-////////
-
-export const function28 = (
+export const getStudentBelowCertainMarkInSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -562,9 +493,7 @@ export const function28 = (
   return counter;
 };
 
-////////
-
-export const function29 = (
+export const getStudentAboveCertainMarkInSubjects = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -586,9 +515,7 @@ export const function29 = (
   return incr;
 };
 
-///////
-
-export const function30 = (
+export const getStudentBelowCertainMarkInSubjects = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -610,57 +537,63 @@ export const function30 = (
   return incr;
 };
 
-////////
-
-export const function31 = (
+export const getPercentageAboveCertainMarkInSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  let num = function27(studentName, subjectName, markScored);
+  let num = getStudentAboveCertainMarkInSubject(
+    studentName,
+    subjectName,
+    markScored
+  );
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
-/////////
-
-export const function32 = (
+export const getPercentageBelowCertainMarkInSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  let num = function28(studentName, subjectName, markScored);
+  let num = getStudentBelowCertainMarkInSubject(
+    studentName,
+    subjectName,
+    markScored
+  );
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
-////////
-
-export const function33 = (
+export const getPercentageAboveCertainMarkInSubjects = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  let num = function29(studentName, subjectName, markScored);
+  let num = getStudentAboveCertainMarkInSubjects(
+    studentName,
+    subjectName,
+    markScored
+  );
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
-///////////
-
-export const function34 = (
+export const getPercentageBelowCertainMarkInSubjects = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  let num = function30(studentName, subjectName, markScored);
+  let num = getStudentBelowCertainMarkInSubjects(
+    studentName,
+    subjectName,
+    markScored
+  );
   let totalStudents = students();
   return `${(num * 100) / totalStudents.length}%`;
 };
 
-//////////////
-
-export const function35 = (
+export const getStudentWithHighPercentageMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -671,9 +604,7 @@ export const function35 = (
   }%`;
 };
 
-/////////////
-
-export const function36 = (
+export const getStudentWithLowPercentageMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -682,9 +613,7 @@ export const function36 = (
   return `${arr[0].name}: ${(arr[0].total * 100) / 250}%`;
 };
 
-////////
-
-export const function37 = (
+export const getSubjectWithHighPercentageMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -695,9 +624,7 @@ export const function37 = (
   }%`;
 };
 
-///////////
-
-export const function38 = (
+export const getSubjectWithLowPercentageMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -706,14 +633,12 @@ export const function38 = (
   return `${arr[0].subject}: ${(arr[0].mark * 100) / 200}%`;
 };
 
-/////
-
-export const function39 = (
+export const getStudentWithHighPercentageinSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  let name = function11(studentName, subjectName, markScored);
+  let name = getHighestMarkInSubject(studentName, subjectName, markScored);
   let mark = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
@@ -727,14 +652,12 @@ export const function39 = (
   return `${name}: ${(mark * 100) / 50}%`;
 };
 
-///////
-
-export const function40 = (
+export const getStudentWithLowPercentageinSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  let name = function12(studentName, subjectName, markScored);
+  let name = getLowestMarkInSubject(studentName, subjectName, markScored);
   let mark = 0;
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
@@ -748,9 +671,7 @@ export const function40 = (
   return `${name}: ${(mark * 100) / 50}%`;
 };
 
-///////////
-
-export const function41 = (
+export const getSubjectsWithHighestPercentageMarkOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -773,9 +694,7 @@ export const function41 = (
   return `${sub}: ${(prev * 100) / 50}%`;
 };
 
-////////////////
-
-export const function42 = (
+export const getSubjectsWithLowestPercentageMarkOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -802,9 +721,7 @@ export const function42 = (
   return `${sub}: ${(prev * 100) / 50}%`;
 };
 
-///////////
-
-export const function43 = (
+export const getSubjectAboveCertainMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -829,9 +746,7 @@ export const function43 = (
   return filteredSubs;
 };
 
-//////////////////
-
-export const function44 = (
+export const getSubjectBelowCertainMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -856,9 +771,7 @@ export const function44 = (
   return filteredSubs;
 };
 
-////////////
-
-export const function45 = (
+export const getSubjectAboveCertainMarkAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -880,9 +793,7 @@ export const function45 = (
   return filterdSubs;
 };
 
-///////////
-
-export const function46 = (
+export const getSubjectBelowCertainMarkAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -905,9 +816,7 @@ export const function46 = (
   return filterdSubs;
 };
 
-///////////////
-
-export const function47 = (
+export const getStudentsHighestInAtleastOneSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -917,7 +826,7 @@ export const function47 = (
   let arr: string[] = [];
   let temp = "";
   totalSubjects.forEach((subject) => {
-    temp = function11(studentName, subject, markScored);
+    temp = getHighestMarkInSubject(studentName, subject, markScored);
     arr.push(temp);
   });
   const filtered = arr.filter(
@@ -929,9 +838,7 @@ export const function47 = (
   return names;
 };
 
-/////////////
-
-export const function48 = (
+export const getStudentsBelowInAtleastOneSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -941,7 +848,7 @@ export const function48 = (
   let arr: string[] = [];
   let temp = "";
   totalSubjects.forEach((subject) => {
-    temp = function12(studentName, subject, markScored);
+    temp = getLowestMarkInSubject(studentName, subject, markScored);
     arr.push(temp);
   });
   const filtered = arr.filter(
@@ -953,9 +860,7 @@ export const function48 = (
   return names;
 };
 
-//////////////
-
-export const function49 = (
+export const getAverageOfEachStudentInEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -966,8 +871,6 @@ export const function49 = (
     subject: string;
     average: number;
   }[];
-
-  //////////////
 
   let arr: obj = [];
   classObj.students.forEach((student) => {
@@ -985,9 +888,7 @@ export const function49 = (
   return str;
 };
 
-/////////////
-
-export const function50 = (
+export const getTotalOfEachStudentInEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1015,9 +916,7 @@ export const function50 = (
   return str;
 };
 
-///////////
-
-export const function51 = (
+export const getHighestInEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1027,7 +926,7 @@ export const function51 = (
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
     let temp = element + ":" + " ";
-    temp += function11(studentName, element, markScored);
+    temp += getHighestMarkInSubject(studentName, element, markScored);
     arr.push(temp);
   });
   arr.forEach((element) => {
@@ -1036,9 +935,7 @@ export const function51 = (
   return str;
 };
 
-//////////
-
-export const function52 = (
+export const getLowestInEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1048,7 +945,7 @@ export const function52 = (
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
     let temp = element + ":" + " ";
-    temp += function12(studentName, element, markScored);
+    temp += getLowestMarkInSubject(studentName, element, markScored);
     arr.push(temp);
   });
   arr.forEach((element) => {
@@ -1057,9 +954,7 @@ export const function52 = (
   return str;
 };
 
-///////
-
-export const function53 = (
+export const getHighestMarkSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1079,9 +974,7 @@ export const function53 = (
   return sub;
 };
 
-//////
-
-export const function54 = (
+export const getLowesMarkSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1105,19 +998,17 @@ export const function54 = (
   return sub;
 };
 
-///////////
-
-export const function55 = (
+export const getStudentsAboveClassAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   const totalStudents = students();
   let str = "";
   let arr: string[] = [];
   totalStudents.forEach((student) => {
-    let temp = function7(student, subjectName, markScored);
+    let temp = getStudentAverage(student, subjectName, markScored);
     if (temp > classAverage) {
       arr.push(student);
     }
@@ -1128,19 +1019,17 @@ export const function55 = (
   return str;
 };
 
-///////
-
-export const function56 = (
+export const getStudentsBelowClassAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   const totalStudents = students();
   let str = "";
   let arr: string[] = [];
   totalStudents.forEach((student) => {
-    let temp = function7(student, subjectName, markScored);
+    let temp = getStudentAverage(student, subjectName, markScored);
     if (temp < classAverage) {
       arr.push(student);
     }
@@ -1151,21 +1040,19 @@ export const function56 = (
   return str;
 };
 
-//////
-
-export const function57 = (
+export const getSubjectAverageAboveClassAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   const totalSubs = subjects();
 
   let str = "";
   let arr: string[] = [];
 
   totalSubs.forEach((sub) => {
-    let temp = function9(studentName, sub, markScored);
+    let temp = getAverageOfSubject(studentName, sub, markScored);
     if (temp > classAverage) {
       arr.push(sub);
     }
@@ -1176,21 +1063,19 @@ export const function57 = (
   return str;
 };
 
-////////////
-
-export const function58 = (
+export const getSubjectAverageBelowClassAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   const totalSubs = subjects();
 
   let str = "";
   let arr: string[] = [];
 
   totalSubs.forEach((sub) => {
-    let temp = function9(studentName, sub, markScored);
+    let temp = getAverageOfSubject(studentName, sub, markScored);
     if (temp < classAverage) {
       arr.push(sub);
     }
@@ -1201,9 +1086,7 @@ export const function58 = (
   return str;
 };
 
-////////
-
-export const function59 = (
+export const getSubjectWithHighPercentageOfStudentAboveCertainMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1234,9 +1117,7 @@ export const function59 = (
   return arr[arr.length - 1].subject;
 };
 
-///////////
-
-export const function60 = (
+export const getSubjectWithHighPercentageOfStudentBelowCertainMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1267,9 +1148,7 @@ export const function60 = (
   return arr[arr.length - 1].subject;
 };
 
-///////////
-
-export const function61 = (
+export const getSubjectWithLowestPercentageOfStudentAboveCertainMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1300,9 +1179,7 @@ export const function61 = (
   return arr[0].subject;
 };
 
-////////
-
-export const function62 = (
+export const getSubjectWithLowestPercentageOfStudentBelowCertainMark = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1333,15 +1210,13 @@ export const function62 = (
   return arr[0].subject;
 };
 
-////////
-
-export const function63 = (
+export const getPercentageOfAboveClassAverageInEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.subject === subjectName) {
@@ -1354,15 +1229,13 @@ export const function63 = (
   return (counter * 100) / classObj.students.length + "%";
 };
 
-////////
-
-export const function64 = (
+export const getPercentageOfBelowClassAverageInEachSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.subject === subjectName) {
@@ -1375,16 +1248,14 @@ export const function64 = (
   return (counter * 100) / classObj.students.length + "%";
 };
 
-////////
-
-export const function65 = (
+export const getPercentageOfAboveClassAverageInAtleastOneSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1399,16 +1270,14 @@ export const function65 = (
   return (mainCounter * 100) / classObj.students.length + "%";
 };
 
-/////////
-
-export const function66 = (
+export const getPercentageOfBelowClassAverageInAtleastOneSubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1423,16 +1292,14 @@ export const function66 = (
   return (mainCounter * 100) / classObj.students.length + "%";
 };
 
-/////////
-
-export const function67 = (
+export const getStudentsWithAboveClassAverageInEverySubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1447,16 +1314,14 @@ export const function67 = (
   return (mainCounter * 100) / classObj.students.length + "%";
 };
 
-/////////
-
-export const function68 = (
+export const getStudentsWithBelowClassAverageInEverySubject = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1471,16 +1336,14 @@ export const function68 = (
   return (mainCounter * 100) / classObj.students.length + "%";
 };
 
-///////////
-
-export const function69 = (
+export const getStudentsWithAboveClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1495,16 +1358,14 @@ export const function69 = (
   return (mainCounter * 100) / classObj.students.length + "%";
 };
 
-//////////
-
-export const function70 = (
+export const getStudentsWithBelowClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let mainCounter = 0;
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1519,9 +1380,7 @@ export const function70 = (
   return (mainCounter * 100) / classObj.students.length + "%";
 };
 
-/////////
-
-export const function71 = (
+export const getSubjectWithAboveClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1532,7 +1391,7 @@ export const function71 = (
   }[];
   let arr: obj = [];
 
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   const totalSubjects = subjects();
   totalSubjects.forEach((sub) => {
     let counter = 0;
@@ -1551,9 +1410,7 @@ export const function71 = (
   return arr[arr.length - 1].subject;
 };
 
-///////
-
-export const function72 = (
+export const getSubjectWithBelowClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1564,7 +1421,7 @@ export const function72 = (
   }[];
   let arr: obj = [];
 
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   const totalSubjects = subjects();
   totalSubjects.forEach((sub) => {
     let counter = 0;
@@ -1583,14 +1440,16 @@ export const function72 = (
   return arr[0].subject;
 };
 
-/////////
-
-export const function73 = (
+export const getStudentPercentageAboveClassAverageInEach = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let counter = 0;
 
   classObj.students.forEach((student) => {
@@ -1605,14 +1464,16 @@ export const function73 = (
   return (counter * 100) / 4 + "%";
 };
 
-////////
-
-export const function74 = (
+export const getStudentPercentageBelowClassAverageInEach = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let counter = 0;
 
   classObj.students.forEach((student) => {
@@ -1627,14 +1488,16 @@ export const function74 = (
   return (counter * 100) / 4 + "%";
 };
 
-////////
-
-export const function75 = (
+export const getPercentageOfStudentsAboveAverageOfSpecificStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let counter = 0;
   let mainCounter = 0;
 
@@ -1652,14 +1515,16 @@ export const function75 = (
   return (mainCounter * 100) / 4 + "%";
 };
 
-//////
-
-export const function76 = (
+export const getPercentageOfStudentsBelowAverageOfSpecificStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let counter = 0;
   let mainCounter = 0;
 
@@ -1677,14 +1542,16 @@ export const function76 = (
   return (mainCounter * 100) / 4 + "%";
 };
 
-//////
-
-export const function77 = (
+export const getPercentageOfStudentsAboveAverageOfSpecificStudentInAll = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let counter = 0;
   let mainCounter = 0;
 
@@ -1702,14 +1569,16 @@ export const function77 = (
   return (mainCounter * 100) / 4 + "%";
 };
 
-//////
-
-export const function78 = (
+export const getPercentageOfStudentsBelowAverageOfSpecificStudentInAll = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let counter = 0;
   let mainCounter = 0;
 
@@ -1727,19 +1596,21 @@ export const function78 = (
   return (mainCounter * 100) / 4 + "%";
 };
 
-///////
-
-export const function79 = (
+export const getSubjectAverageAboveStudentAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let str = "";
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function9(studentName, element, markScored);
+    let temp = getAverageOfSubject(studentName, element, markScored);
     if (temp > particularAverage) {
       arr.push(element);
     }
@@ -1750,19 +1621,21 @@ export const function79 = (
   return str;
 };
 
-///////
-
-export const function80 = (
+export const getSubjectAverageBelowStudentAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let str = "";
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function9(studentName, element, markScored);
+    let temp = getAverageOfSubject(studentName, element, markScored);
     if (temp < particularAverage) {
       arr.push(element);
     }
@@ -1773,15 +1646,17 @@ export const function80 = (
   return str;
 };
 
-////////
-
-export const function81 = (
+export const getSubjectsWithHighestPercentageOfAboveAverageOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let str = "";
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
   subAverage.forEach((element) => {
@@ -1795,15 +1670,17 @@ export const function81 = (
   return str;
 };
 
-///////
-
-export const function82 = (
+export const getSubjectsWithHighestPercentageOfBelowAverageOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let str = "";
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
   subAverage.forEach((element) => {
@@ -1817,15 +1694,17 @@ export const function82 = (
   return str;
 };
 
-/////
-
-export const function83 = (
+export const getSubjectsWithLowestPercentageOfAboveAverageOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let str = "";
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   const newArray: string[] = [];
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
@@ -1847,13 +1726,17 @@ export const function83 = (
   return str;
 };
 
-export const function84 = (
+export const getSubjectsWithLowestPercentageOfBelowAverageOfStudent = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let str = "";
-  const particularAverage = function7(studentName, subjectName, markScored);
+  const particularAverage = getStudentAverage(
+    studentName,
+    subjectName,
+    markScored
+  );
   const newArray: string[] = [];
   const subAverage = subjectAverage();
   let filterdArray: string[] = [];
@@ -1875,15 +1758,13 @@ export const function84 = (
   return str;
 };
 
-////////
-
-export const function85 = (
+export const getPercentageStudentsAboveClassAverageInEach = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.subject === subjectName) {
@@ -1896,15 +1777,13 @@ export const function85 = (
   return (counter * 100) / 4 + "%";
 };
 
-//////////
-
-export const function86 = (
+export const getPercentageStudentsBelowClassAverageInEach = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let counter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.subject === subjectName) {
@@ -1917,16 +1796,14 @@ export const function86 = (
   return (counter * 100) / 4 + "%";
 };
 
-//////
-
-export const function87 = (
+export const getPercentageStudentsAboveClassAverageInAtleastOne = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let counter = 0;
   let mainCounter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1941,16 +1818,14 @@ export const function87 = (
   return (mainCounter * 100) / 4 + "%";
 };
 
-///////
-
-export const function88 = (
+export const getPercentageStudentsBelowClassAverageInAtleastOne = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
   let counter = 0;
   let mainCounter = 0;
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -1965,9 +1840,7 @@ export const function88 = (
   return (mainCounter * 100) / 4 + "%";
 };
 
-/////////////
-
-export const function89 = (
+export const getPercentageStudentsAboveClassAverageInAll = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -1975,7 +1848,7 @@ export const function89 = (
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -1993,9 +1866,7 @@ export const function89 = (
   return str;
 };
 
-///////////
-
-export const function90 = (
+export const getPercentageStudentsBelowClassAverageInAll = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -2003,7 +1874,7 @@ export const function90 = (
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark < classAverage) {
@@ -2021,9 +1892,7 @@ export const function90 = (
   return str;
 };
 
-////////
-
-export const function91 = (
+export const getStudentAboveClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -2031,7 +1900,7 @@ export const function91 = (
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -2049,9 +1918,7 @@ export const function91 = (
   return str;
 };
 
-////////
-
-export const function92 = (
+export const getStudentBelowClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -2059,7 +1926,7 @@ export const function92 = (
   let str = "";
   let counter = 0;
   let arr: string[] = [];
-  const classAverage = function17(studentName, subjectName, markScored);
+  const classAverage = getClassAverage(studentName, subjectName, markScored);
   classObj.students.forEach((student) => {
     student.marks.forEach((element) => {
       if (element.mark > classAverage) {
@@ -2077,31 +1944,25 @@ export const function92 = (
   return str;
 };
 
-////////
-
-export const function93 = (
+export const getSubjectAboveClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const ans = function15(studentName, subjectName, markScored);
+  const ans = getHighAverageSubject(studentName, subjectName, markScored);
   return ans;
 };
 
-//////
-
-export const function94 = (
+export const getSubjectBelowClassAverageInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const ans = function16(studentName, subjectName, markScored);
+  const ans = getLowAverageSubject(studentName, subjectName, markScored);
   return ans;
 };
 
-//////////
-
-export const function95 = (
+export const getPercentageStudentAboveAverageOfSpecificInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -2110,7 +1971,11 @@ export const function95 = (
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function73(studentName, element, markScored);
+    let temp = getStudentPercentageAboveClassAverageInEach(
+      studentName,
+      element,
+      markScored
+    );
     let charToRemove = "%";
     let newStr = temp.replace(charToRemove, "");
     arr.push(newStr);
@@ -2121,9 +1986,7 @@ export const function95 = (
   return sum / 4 + "%";
 };
 
-////////
-
-export const function96 = (
+export const getPercentageStudentBelowAverageOfSpecificInMajority = (
   studentName: string,
   subjectName: string,
   markScored: number
@@ -2132,7 +1995,11 @@ export const function96 = (
   let arr: string[] = [];
   const totalSubjects = subjects();
   totalSubjects.forEach((element) => {
-    let temp = function74(studentName, element, markScored);
+    let temp = getStudentPercentageBelowClassAverageInEach(
+      studentName,
+      element,
+      markScored
+    );
     let charToRemove = "%";
     let newStr = temp.replace(charToRemove, "");
     arr.push(newStr);
@@ -2143,46 +2010,28 @@ export const function96 = (
   return sum / 4 + "%";
 };
 
-////////
-
-export const function97 = (
+export const getSubjectsMoreStudentsAboveSpecificStudentAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const ans = function95(studentName, subjectName, markScored);
+  const ans = getSubjectsWithHighestPercentageOfAboveAverageOfStudent(
+    studentName,
+    subjectName,
+    markScored
+  );
   return ans;
 };
 
-//////
-
-export const function98 = (
+export const getSubjectsMoreStudentsBelowSpecificStudentAverage = (
   studentName: string,
   subjectName: string,
   markScored: number
 ) => {
-  const ans = function96(studentName, subjectName, markScored);
-  return ans;
-};
-
-///////
-
-export const function99 = (
-  studentName: string,
-  subjectName: string,
-  markScored: number
-) => {
-  const ans = function81(studentName, subjectName, markScored);
-  return ans;
-};
-
-//////
-
-export const function100 = (
-  studentName: string,
-  subjectName: string,
-  markScored: number
-) => {
-  const ans = function82(studentName, subjectName, markScored);
+  const ans = getSubjectsWithHighestPercentageOfBelowAverageOfStudent(
+    studentName,
+    subjectName,
+    markScored
+  );
   return ans;
 };

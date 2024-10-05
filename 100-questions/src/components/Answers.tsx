@@ -1,19 +1,7 @@
-import React from "react";
-import { questionPropType } from "../types/types";
-
-type answerTypeProp = {
-  isTrue: boolean;
-  visibleAnswers: boolean[];
-  index: number;
-  element: questionPropType[number];
-  student: string;
-  subject: string;
-  mark: number;
-};
+import { answerTypeProp } from "../type/type";
 
 function Answers({
-  isTrue,
-  visibleAnswers,
+  isOpen,
   index,
   element,
   student,
@@ -22,10 +10,11 @@ function Answers({
 }: answerTypeProp) {
   return (
     <div
+      key={index}
       className="answers"
-      style={{ display: visibleAnswers[index] ? "block" : "none" }}
+      style={{ display: isOpen ? "block" : "none" }}
     >
-      {isTrue && <span>{element.ans(student, subject, mark)}</span>}
+      <span>{element.ans(student, subject, mark)}</span>
     </div>
   );
 }
