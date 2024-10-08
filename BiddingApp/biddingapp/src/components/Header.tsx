@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import notificationFalse from "../images/notificatin1.jpg";
 import notificationTrue from "../images/notification2.avif";
+import { UserContext } from "../App";
 
 type headerElementsPropType = {
   notification: boolean;
   setnotification: React.Dispatch<React.SetStateAction<boolean>>;
-  currentUser: any;
 };
 
-function Header({
-  notification,
-  setnotification,
-  currentUser,
-}: headerElementsPropType) {
+function Header({ notification, setnotification }: headerElementsPropType) {
+  const currentUserString = localStorage.getItem("currentUser");
+  const currentUser = currentUserString && JSON.parse(currentUserString);
+  console.log(currentUser.name);
+
   return (
     <div className="w-full h-[124px] border-[1px] flex justify-between items-center p-[20px]">
       <span className="font-bold text-[32px]">BIDHERE</span>
@@ -41,7 +41,7 @@ function Header({
         <div
           className="w-[50px] h-[50px] rounded-full"
           style={{
-            backgroundImage: `url(${currentUser.image})`,
+            backgroundImage: `url(${currentUser.image}})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",

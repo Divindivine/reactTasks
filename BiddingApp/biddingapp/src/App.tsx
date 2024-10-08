@@ -3,22 +3,21 @@ import InitialPage from "./page/InitialPage";
 import { Routes, Route } from "react-router-dom";
 import SelectedProductPage from "./page/SelectedProductPage";
 import HomePage from "./page/HomePage";
-import { createContext } from "vm";
-import { useState } from "react";
-import { userPropType } from "./type/type";
-import { create } from "domain";
+import { createContext } from "react";
+import { useState, useEffect } from "react";
+import { currentUserPropType, userPropType } from "./type/type";
 
-
-export const UserContext = createContext()
-
+export const UserContext = createContext<userPropType | null>(null);
 
 function App() {
-  const [currentUser, setcurrentUser] = useState({
-    name: "Divin",
-    image:
-      "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjEwMzQtZWxlbWVudC0wNy00MDMucG5n.png",
-  });
-  const num = 0;
+  const user = localStorage.getItem("currentUser");
+  const currentuser = user && JSON.parse(user);
+  const [currentUser, setcurrentUser] = useState(
+    currentuser || ({} as currentUserPropType)
+  );
+
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
   return (
     <div className="App">
       <UserContext.Provider value={{ currentUser, setcurrentUser }}>

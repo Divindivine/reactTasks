@@ -1,7 +1,8 @@
-import React from "react";
-import { productItemsPropType } from "../type/type";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { productElementPropType, productItemsPropType } from "../type/type";
 
 function ProductItems({ element }: productItemsPropType) {
+  const ProductPage = useNavigate();
   return (
     <div className="w-[269px] h-[348px] border-[1px] flex flex-col">
       <span className="font-bold text-[20px] leading-[30px] font-poppins text-left ml-[10px]">
@@ -30,7 +31,10 @@ function ProductItems({ element }: productItemsPropType) {
               <span>Sold Out</span>
             </div>
           ) : (
-            <button className="w-[116px] h-[44px] rounded-[4px] bg-black mt-[20px]">
+            <button
+              className="w-[116px] h-[44px] rounded-[4px] bg-black mt-[20px]"
+              onClick={() => ProductPage("/bidnow",{state:element})}
+            >
               <span className="text-white">Place Bid</span>
             </button>
           )}
