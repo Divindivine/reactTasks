@@ -2,6 +2,7 @@ import { useState } from "react";
 import { products } from "../data/products";
 import ProductItems from "../components/ProductItems";
 import Header from "../components/Header";
+import { productElementPropType } from "../type/type";
 
 function HomePage() {
   const [notification, setnotification] = useState(false);

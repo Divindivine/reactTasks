@@ -6,6 +6,7 @@ import HomePage from "./page/HomePage";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 import { currentUserPropType, userPropType } from "./type/type";
+import { products } from "./data/products";
 
 export const UserContext = createContext<userPropType | null>(null);
 
@@ -17,6 +18,7 @@ function App() {
   );
 
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  localStorage.setItem("products",JSON.stringify(products));
 
   return (
     <div className="App">

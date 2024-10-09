@@ -1,8 +1,10 @@
 import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { productElementPropType, productItemsPropType } from "../type/type";
 
-function ProductItems({ element }: productItemsPropType) {
+function ProductItems({element}: productItemsPropType) {
   const ProductPage = useNavigate();
+  const productsString = localStorage.getItem("products");
+  const products = productsString && JSON.parse(productsString);
   return (
     <div className="w-[269px] h-[348px] border-[1px] flex flex-col">
       <span className="font-bold text-[20px] leading-[30px] font-poppins text-left ml-[10px]">
@@ -22,7 +24,12 @@ function ProductItems({ element }: productItemsPropType) {
       ></div>
       <div className="flex justify-between">
         <div className="h-[44px] w-[77px] flex flex-col mt-[20px]">
-          <span className="font-bold text-[20px]">${element.currentBid}</span>
+          {
+            products.map((product:productElementPropType) => (
+              product.id === element.id && <span className="font-bold text-[20px]">${element.currentBid}</span>
+            ))
+          }
+        
           <span className="font-semibold text-[14px]">Current Bid</span>
         </div>
         <div>

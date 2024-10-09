@@ -13,9 +13,18 @@ export type productItemsPropType = {
 };
 
 export type productElementPropType = {
+  id: number;
   features: string;
   location: string;
   sold: boolean;
   currentBid: number;
   image: string;
+  bid: bidsPropType;
 };
+
+export type bidsPropType = {
+  name: string;
+  photo: String;
+  bid: number;
+}[];
+
