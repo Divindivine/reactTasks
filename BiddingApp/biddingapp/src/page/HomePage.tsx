@@ -13,8 +13,8 @@ function HomePage() {
         <Header notification={notification} setnotification={setnotification} />
         <div className="w-full flex justify-center">
           <div className="w-[1052px] py-[80px] flex flex-wrap gap-[30px]">
-            {products.map((element) => (
-              <ProductItems element={element} />
+            {products.map((element,index) => (
+              <ProductItems key={index} element={element} />
             ))}
           </div>
         </div>

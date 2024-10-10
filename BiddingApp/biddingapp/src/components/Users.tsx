@@ -2,20 +2,12 @@ import { useContext, useEffect } from "react";
 import { users } from "../data/users";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
+import { currentUserPropType, eachCurrentUserPropType, productItemsPropType } from "../type/type";
 
-function Users() {
+function Users({element}:eachCurrentUserPropType) {
   const usercontext = useContext(UserContext);
   
-  // useEffect(() => {
-  //   console.log("jha")
-  //   localStorage.setItem(
-  //     "currentUser",
-  //     JSON.stringify(usercontext?.currentUser)
-  //   );
-  // }, [usercontext?.currentUser]);
-
   const createCurrentUser = (element:{name:string,image:string}) =>{
-
     usercontext?.setcurrentUser({
       name:element.name,
       image: element.image
@@ -23,12 +15,10 @@ function Users() {
   }
 
   return (
-    <>
-      {users.map((element, index) => (
+  
         <>
           <Link to = "products">
             <div
-              key={index}
               className="flex p-[16px] flex-col items-center gap-[13px] rounded-[23px] bg-white"
               onClick={() => {createCurrentUser(element)}}
             >
@@ -47,8 +37,6 @@ function Users() {
             </div>
           </Link>
         </>
-      ))}
-    </>
   );
 }
 

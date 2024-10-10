@@ -1,10 +1,15 @@
 import { Link, useNavigate, useNavigation } from "react-router-dom";
-import { productElementPropType, productItemsPropType } from "../type/type";
+import {
+  auctionListType,
+  productElementPropType,
+  productItemsPropType,
+} from "../type/type";
 
-function ProductItems({element}: productItemsPropType) {
+function ProductItems({ element }: productItemsPropType) {
   const ProductPage = useNavigate();
-  const productsString = localStorage.getItem("products");
-  const products = productsString && JSON.parse(productsString);
+  const auctionListString = localStorage.getItem("auctionlist");
+  
+  const auctioinList = auctionListString && JSON.parse(auctionListString);
   return (
     <div className="w-[269px] h-[348px] border-[1px] flex flex-col">
       <span className="font-bold text-[20px] leading-[30px] font-poppins text-left ml-[10px]">
@@ -24,12 +29,21 @@ function ProductItems({element}: productItemsPropType) {
       ></div>
       <div className="flex justify-between">
         <div className="h-[44px] w-[77px] flex flex-col mt-[20px]">
-          {
-            products.map((product:productElementPropType) => (
-              product.id === element.id && <span className="font-bold text-[20px]">${element.currentBid}</span>
-            ))
-          }
-        
+          {auctioinList ? (
+            auctioinList.map(
+              (product: auctionListType, index: number) =>
+                product.id === element.id && (
+                  <span key={index} className="font-bold text-[20px]">
+                    ${product.bid[0].bid}
+                  </span>
+                )
+            )
+          ) : (
+            <span className="font-normal text-[14px] whitespace-nowrap">
+              Bid Not Yet Started
+            </span>
+          )}
+
           <span className="font-semibold text-[14px]">Current Bid</span>
         </div>
         <div>
@@ -40,7 +54,7 @@ function ProductItems({element}: productItemsPropType) {
           ) : (
             <button
               className="w-[116px] h-[44px] rounded-[4px] bg-black mt-[20px]"
-              onClick={() => ProductPage("/bidnow",{state:element})}
+              onClick={() => ProductPage("/bidnow", { state: element })}
             >
               <span className="text-white">Place Bid</span>
             </button>

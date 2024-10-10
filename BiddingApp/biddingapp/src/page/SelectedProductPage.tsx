@@ -1,12 +1,89 @@
 import React from "react";
-import { productElementPropType } from "../type/type";
+import { auctionListType, productElementPropType } from "../type/type";
 import { useLocation, useNavigate, useNavigation } from "react-router-dom";
+import { useState } from "react";
+import { triggerAsyncId } from "async_hooks";
 
 function SelectedProductPage() {
   const { state } = useLocation();
-  const productsString = localStorage.getItem("products");
-  const products = productsString && JSON.parse(productsString);
-  
+  const auctionListString = localStorage.getItem("auctionlist");
+  const auctionList = auctionListString ? JSON.parse(auctionListString) : [];
+  const [amount, setamount] = useState<number>();
+  let isTrue = false;
+  const [currentbid, setcurrentbid] = useState<number>(0);
+  auctionList &&
+    auctionList.map((product: auctionListType) => {
+      if (product.id === state.id) {
+        setcurrentbid(product.bid[0].bid);
+      }
+    });
+
+  const currentUserString = localStorage.getItem("currentUser");
+  const currentUser = currentUserString && JSON.parse(currentUserString);
+  console.log(currentUser);
+  const handleBid = () => {
+    if (amount) {
+      if (amount > currentbid) isTrue = true;
+      else isTrue = false;
+    }
+
+    if (isTrue) {
+      if (auctionList.length === 0) {
+        const temp = {
+          name: currentUser.name,
+          photo: currentUser.image,
+          bid: amount,
+        };
+        const temp1 = state.id;
+        auctionList.push({ temp1, temp });
+      } else {
+        auctionList.map((element: auctionListType) => {
+          if (element.id === state.id) {
+            auctionList.bid.push({
+              name: currentUser.name,
+              photo: currentUser.image,
+              bid: amount,
+            });
+          }
+        });
+        const sortedBidList = auctionList.sort(
+          (a: auctionListType, b: auctionListType) => {
+            const highestBidA =
+              a.bid.length > 0 ? Math.max(...a.bid.map((bid) => bid.bid)) : 0;
+            const highestBidB =
+              b.bid.length > 0 ? Math.max(...b.bid.map((bid) => bid.bid)) : 0;
+            return highestBidB - highestBidA;
+          }
+        );
+        localStorage.setItem("auctionlist", JSON.stringify(sortedBidList));
+      }
+    } else {
+      alert("please enter amount more than the currentbid");
+    }
+    // if(amount){
+    //   if(amount > currentbid){
+    //     isTrue = true;
+    //   }
+    //   else{
+    //     isTrue = false
+    //   }
+    // }
+    // // amount ? (amount > currentBid ? (isTrue = true) : (isTrue = false)) : null;
+    // if(amount && isTrue){
+    //   products.map((product: productElementPropType) => {
+    //     if (product.id === state.id) {
+    //       product.bid.push({name:currentUser.name,photo:currentUser.photo,bid:amount})
+    //     }
+    //   });
+    //   const sortedProducts = products.sort((a:productElementPropType, b:productElementPropType) => {
+    //     const highestBidA = a.bid.length > 0 ? a.bid[0].bid : 0;
+    //     const highestBidB = b.bid.length > 0 ? b.bid[0].bid : 0;
+    //     return highestBidB - highestBidA;
+    //   });
+    //   localStorage.setItem("products",JSON.stringify(sortedProducts))
+    // }
+  };
+
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[#f0f4fb]">
       <div className="flex gap-[20px]">
@@ -26,9 +103,11 @@ function SelectedProductPage() {
           <span className="font-bold text-[14px] leading-[21px] text-[#90a3bf] text-left mt-[10px]">
             {state.location}
           </span>
+
           <span className="font-bold text-[32px] leading-[40px] mt-[20px]">
-            ${state.currentBid}
+            ${currentbid}
           </span>
+
           <span className="font-semibold text-[14px] opacity-40">
             Current Bid
           </span>
@@ -38,19 +117,48 @@ function SelectedProductPage() {
               Live Auction
             </span>
           </div>
-        {/* here ownwards bidders list */}
-          <div className="flex justify-between items-center mt-[20px] border-b border-black">
-            <div className="flex gap-[10px] items-center">
-              <div className="w-[25px] h-[25px] rounded-full"></div>
-              <span className="text-[18px]">divn</span>
-            </div>
-            <span className="text-[16px]">$340</span>
-          </div>
+          {/* here ownwards bidders list */}
+          {auctionList ? (
+            auctionList.map(
+              (product: auctionListType) =>
+                product.id === state.id &&
+                product.bid.map((bidders) => (
+                  <div className="flex justify-between items-center mt-[20px] border-b border-black">
+                    <div className="flex gap-[10px] items-center">
+                      <div
+                        className="w-[50px] h-[50px] rounded-full"
+                        style={{
+                          backgroundImage: `url(${bidders.photo})`,
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "center",
+                          backgroundSize: "cover",
+                        }}
+                      ></div>
+                      <span className="text-[18px]">{bidders.name}</span>
+                    </div>
+                    <span className="text-[16px]">${bidders.bid}</span>
+                  </div>
+                ))
+            )
+          ) : (
+            <span className="font-poppins text-[20px] font-semibold">
+              you are first to bid
+            </span>
+          )}
           <div className="flex justify-between items-center">
-            <input placeholder="Enter Amount" className="w-[150px] h-[50px] rounded-[6px] mt-[20px]"/>
+            <input
+              placeholder="Enter Amount"
+              type="number"
+              className="w-[150px] h-[50px] rounded-[6px] mt-[20px]"
+              // value={amount}
+              onChange={(e) => setamount(+e.target.value)}
+            />
             <button
               className="w-[116px] h-[44px] rounded-[4px] bg-black mt-[20px] text-white"
-              >Bid Now</button>
+              onClick={() => handleBid()}
+            >
+              Bid Now
+            </button>
           </div>
         </div>
       </div>

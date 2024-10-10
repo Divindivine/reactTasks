@@ -1,7 +1,10 @@
 import "../styles/InitialPage.css";
 import Users from "../components/Users";
+import { users } from "../data/users";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../App";
+import { addSyntheticLeadingComment } from "typescript";
+
 
 function InitialPage() {
 
@@ -18,7 +21,12 @@ function InitialPage() {
           </span>
         </div>
         <div className="flex justify-center items-center content-center gap-[16px] self-stretch flex-wrap">
-          <Users />
+          {
+            users.map((element,index)=>(
+              <Users element={element} key={index}/>
+            ))
+          }
+        
 
           <div className="flex p-[16px] flex-col items-center gap-[13px] rounded-[23px] bg-white">
             <div className="flex w-[50px] h-[50px] p-[14px] justify-center align-center border-[2px] rounded-[15px]">
@@ -35,3 +43,4 @@ function InitialPage() {
 }
 
 export default InitialPage;
+
