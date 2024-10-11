@@ -1,15 +1,24 @@
-import { Link, useNavigate, useNavigation } from "react-router-dom";
-import {
-  auctionListType,
-  productElementPropType,
-  productItemsPropType,
-} from "../type/type";
+import { useNavigate } from "react-router-dom";
+import { auctionElementType, productItemsPropType } from "../type/type";
+import { useMemo } from "react";
 
 function ProductItems({ element }: productItemsPropType) {
   const ProductPage = useNavigate();
   const auctionListString = localStorage.getItem("auctionlist");
-  
-  const auctioinList = auctionListString && JSON.parse(auctionListString);
+  const auctionList = auctionListString && JSON.parse(auctionListString);
+
+  const latestBidPrice = useMemo(() => {
+    if (!auctionList?.length) {
+      return;
+    }
+
+    const productDetails = auctionList.find(
+      (item: auctionElementType) => item.id === element.id
+    );
+
+    return productDetails?.bids[0].bid;
+  }, [auctionList, element]);
+
   return (
     <div className="w-[269px] h-[348px] border-[1px] flex flex-col">
       <span className="font-bold text-[20px] leading-[30px] font-poppins text-left ml-[10px]">
@@ -29,20 +38,17 @@ function ProductItems({ element }: productItemsPropType) {
       ></div>
       <div className="flex justify-between">
         <div className="h-[44px] w-[77px] flex flex-col mt-[20px]">
-          {auctioinList ? (
-            auctioinList.map(
-              (product: auctionListType, index: number) =>
-                product.id === element.id && (
-                  <span key={index} className="font-bold text-[20px]">
-                    ${product.bid[0].bid}
-                  </span>
-                )
-            )
-          ) : (
-            <span className="font-normal text-[14px] whitespace-nowrap">
-              Bid Not Yet Started
+          {
+            <span
+              className={`${
+                latestBidPrice
+                  ? "font-bold text-[20px]"
+                  : "font-normal text-[14px] whitespace-nowrap"
+              }`}
+            >
+              {latestBidPrice || "Bid Not Yet Started"}
             </span>
-          )}
+          }
 
           <span className="font-semibold text-[14px]">Current Bid</span>
         </div>
@@ -59,7 +65,6 @@ function ProductItems({ element }: productItemsPropType) {
               <span className="text-white">Place Bid</span>
             </button>
           )}
-          {}
         </div>
       </div>
     </div>
@@ -67,3 +72,5 @@ function ProductItems({ element }: productItemsPropType) {
 }
 
 export default ProductItems;
+
+

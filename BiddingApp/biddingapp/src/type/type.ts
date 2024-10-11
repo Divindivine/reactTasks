@@ -33,7 +33,20 @@ export type bidsPropType = {
 
 export type auctionListType = {
   id: number;
-  bid:bidsPropType
+  bids:bidsPropType
+}[]
+
+export type auctionElementType = {
+  id: number;
+  bids:bidsPropType
 }
 
+export type biddersListPropType = {
+  auctionList:auctionListType;
+  currentProduct:productElementPropType
+}
 
+export type specificProductDetailPropType = {
+  currentProduct:productElementPropType;
+  bid:number;
+}

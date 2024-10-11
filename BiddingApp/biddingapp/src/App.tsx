@@ -18,7 +18,6 @@ function App() {
   );
 
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
-  localStorage.setItem("products",JSON.stringify(products));
 
   return (
     <div className="App">

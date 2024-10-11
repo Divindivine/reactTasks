@@ -1,13 +1,8 @@
-import "../styles/InitialPage.css";
 import Users from "../components/Users";
 import { users } from "../data/users";
-import { useContext, useEffect } from "react";
-import { UserContext } from "../App";
-import { addSyntheticLeadingComment } from "typescript";
-
+import "../styles/InitialPage.css";
 
 function InitialPage() {
-
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[#f0f4fb]">
       <div className="flex w-[670px] flex-col items-center gap-[32px] ">
@@ -21,12 +16,9 @@ function InitialPage() {
           </span>
         </div>
         <div className="flex justify-center items-center content-center gap-[16px] self-stretch flex-wrap">
-          {
-            users.map((element,index)=>(
-              <Users element={element} key={index}/>
-            ))
-          }
-        
+          {users.map((element, index) => (
+            <Users element={element} key={index} />
+          ))}
 
           <div className="flex p-[16px] flex-col items-center gap-[13px] rounded-[23px] bg-white">
             <div className="flex w-[50px] h-[50px] p-[14px] justify-center align-center border-[2px] rounded-[15px]">
@@ -43,4 +35,3 @@ function InitialPage() {
 }
 
 export default InitialPage;
-
