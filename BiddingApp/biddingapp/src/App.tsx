@@ -5,8 +5,7 @@ import SelectedProductPage from "./page/SelectedProductPage";
 import HomePage from "./page/HomePage";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
-import { currentUserPropType, userPropType } from "./type/type";
-import { products } from "./data/products";
+import { currentUserPropType, userPropType } from "./type/type";   
 
 export const UserContext = createContext<userPropType | null>(null);
 

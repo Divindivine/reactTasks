@@ -1,6 +1,6 @@
 export type eachCurrentUserPropType = {
-  element: currentUserPropType
-}
+  element: currentUserPropType;
+};
 
 export type currentUserPropType = {
   name: string;
@@ -33,20 +33,34 @@ export type bidsPropType = {
 
 export type auctionListType = {
   id: number;
-  bids:bidsPropType
-}[]
+  bids: bidsPropType;
+}[];
 
 export type auctionElementType = {
   id: number;
-  bids:bidsPropType
-}
+  bids: bidsPropType;
+};
 
 export type biddersListPropType = {
-  auctionList:auctionListType;
-  currentProduct:productElementPropType
-}
+  auctionList: auctionListType;
+  currentProduct: productElementPropType;
+};
 
 export type specificProductDetailPropType = {
-  currentProduct:productElementPropType;
-  bid:number;
-}
+  currentProduct: productElementPropType;
+  bid: number;
+};
+
+export type notificationType = notificationElementType[];
+
+export type notificationElementType = {
+  name: string;
+  history: string[];
+};
+ 
+export type headerElementsPropType = {
+  notification: boolean;
+  setnotification: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type pages ={page:string}

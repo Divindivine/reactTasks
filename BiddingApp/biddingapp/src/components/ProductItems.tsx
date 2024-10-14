@@ -1,24 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { auctionElementType, productItemsPropType } from "../type/type";
 import { useMemo } from "react";
+import { cp } from "fs";
 
 function ProductItems({ element }: productItemsPropType) {
-  const ProductPage = useNavigate();
+  const navigate = useNavigate();
   const auctionListString = localStorage.getItem("auctionlist");
   const auctionList = auctionListString && JSON.parse(auctionListString);
-
   const latestBidPrice = useMemo(() => {
     if (!auctionList?.length) {
       return;
     }
-
     const productDetails = auctionList.find(
       (item: auctionElementType) => item.id === element.id
     );
-
     return productDetails?.bids[0].bid;
   }, [auctionList, element]);
-
   return (
     <div className="w-[269px] h-[348px] border-[1px] flex flex-col">
       <span className="font-bold text-[20px] leading-[30px] font-poppins text-left ml-[10px]">
@@ -46,7 +43,7 @@ function ProductItems({ element }: productItemsPropType) {
                   : "font-normal text-[14px] whitespace-nowrap"
               }`}
             >
-              {latestBidPrice || "Bid Not Yet Started"}
+              ${latestBidPrice || "Bid Not Yet Started"}
             </span>
           }
 
@@ -60,7 +57,7 @@ function ProductItems({ element }: productItemsPropType) {
           ) : (
             <button
               className="w-[116px] h-[44px] rounded-[4px] bg-black mt-[20px]"
-              onClick={() => ProductPage("/bidnow", { state: element })}
+              onClick={() => navigate("/bidnow", { state: element })}
             >
               <span className="text-white">Place Bid</span>
             </button>
