@@ -1,36 +1,38 @@
+import { useEffect, useState } from "react";
+import { users } from "../data/users";
 import notificationFalse from "../images/notificatin1.jpg";
 import notificationTrue from "../images/notification2.avif";
-import { users } from "../data/users";
-import { useState } from "react";
 import {
+  auctionElementType,
   currentUserPropType,
-  notificationElementType,
   headerElementsPropType,
 } from "../type/type";
+import { AUCTION_LIST, CURRENT_USER } from "../constants";
 
 function Header({ notification, setnotification }: headerElementsPropType) {
-  const currentUserString = localStorage.getItem("currentUser");
+  const currentUserString = localStorage.getItem(CURRENT_USER);
   const currentUser = currentUserString && JSON.parse(currentUserString);
+  const auctionListString = localStorage.getItem(AUCTION_LIST);
+  const auctionList = auctionListString && JSON.parse(auctionListString);
   const [profileShowTrue, setprofileShowTrue] = useState(false);
   const profileShow = () => {
     setprofileShowTrue((prev: boolean) => !prev);
   };
 
-  const notificationsShowString = localStorage.getItem("bidNotification");
-  const notificationsShow =
-    notificationsShowString && JSON.parse(notificationsShowString);
-  if (notificationsShow === null) {
-    setnotification(false);
-  } else {
-    notificationsShow.map((element: notificationElementType) => {
-      if (element.name !== currentUser.name) {
-        if (element.history.length !== 0) {
-          console.log(element);
-          setnotification(true);
-        }
+  useEffect(() => {
+    if (!auctionList) {
+      setnotification(false);
+      return;
+    }
+
+    auctionList.map((house: auctionElementType) => {
+      if (house.bids[0].name !== currentUser.name) {
+        setnotification(true);
+        return;
       }
     });
-  }
+  }, [auctionList, currentUser]);
+
   const handleProfileView = (user: currentUserPropType) => {
     localStorage.setItem(
       "currentUser",
@@ -43,7 +45,6 @@ function Header({ notification, setnotification }: headerElementsPropType) {
   };
 
   const [showNotification, setshowNotification] = useState(false);
-
   const showNotifications = () => {
     setshowNotification((prev) => !prev);
   };
@@ -105,14 +106,18 @@ function Header({ notification, setnotification }: headerElementsPropType) {
       )}
       <div className="flex flex-col absolute top-[130px] right-[20px] gap-[5px]">
         {showNotification &&
-          notificationsShow.map((notification: notificationElementType) => (
-            <div className="h-[30px] bg-slate-100 border-[2px] p-[5px]">{notification.history}</div>
-          ))}
+          auctionList.map(
+            (house: auctionElementType) =>
+              house.bids[0].name !== currentUser.name && (
+                <div className="h-[30px] bg-slate-100 border-[2px] p-[5px]">
+                  {house.bids[0].name} has bidded ${house.bids[0].price} for the
+                  house no:{house.id}
+                </div>
+              )
+          )}
       </div>
     </>
   );
 }
 
 export default Header;
-
-

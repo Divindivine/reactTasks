@@ -1,6 +1,6 @@
 export const products = [
   {
-    id:1,
+    id:76312,
     features: "Contains parking slot",
     location: "Mumbai",
     sold: false,
@@ -9,8 +9,8 @@ export const products = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7bgg8ElTMTOFFxQPS-H42NVDKsQ7XMbrJGvkU5_p2JWrL7VfQ22_VJFLL7_4e_5Zz_p0&usqp=CAU",
   },
   {
-    id:2,
-    features: "Contains Swimming pool",
+    id:76313,
+    features: "Contains Pool",
     location: "Delhi",
     sold: true,
     currentBid: 1800,
@@ -19,7 +19,7 @@ export const products = [
 
   },
   {
-    id:3,
+    id:76314,
     features: "Contains AC rooms",
     location: "Hyderabhad",
     sold: false,
@@ -29,8 +29,8 @@ export const products = [
 
   },
   {
-    id:4,
-    features: "Contains Swimming pool",
+    id:76315,
+    features: "Contains Pool",
     location: "Delhi",
     sold: false,
     currentBid: 1850,
@@ -39,7 +39,7 @@ export const products = [
 
   },
   {
-    id:5,
+    id:76316,
     features: "Contains football turf",
     location: "Kochi",
     sold: false,
@@ -49,8 +49,8 @@ export const products = [
 
   },
   {
-    id:6,
-    features: "Contains oraganic garden",
+    id:76317,
+    features: "Contains garden",
     location: "Banglore",
     sold: false,
     currentBid: 1750,
@@ -59,7 +59,7 @@ export const products = [
 
   },
   {
-    id:7,
+    id:76318,
     features: "Contains Playroom",
     location: "Mysore",
     sold: false,
@@ -69,7 +69,7 @@ export const products = [
 
   },
   {
-    id:8,
+    id:76319,
     features: "Contains chappel",
     location: "Pune",
     sold: true,
@@ -79,7 +79,7 @@ export const products = [
 
   },
   {
-    id:9,
+    id:76320,
     features: "Contains Wifi",
     location: "Banglore",
     sold: true,

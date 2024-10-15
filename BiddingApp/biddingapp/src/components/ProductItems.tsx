@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { auctionElementType, productItemsPropType } from "../type/type";
 import { useMemo } from "react";
-import { cp } from "fs";
+import { useNavigate } from "react-router-dom";
+import { AUCTION_LIST } from "../constants";
+import { auctionElementType, productItemsPropType } from "../type/type";
 
 function ProductItems({ element }: productItemsPropType) {
   const navigate = useNavigate();
-  const auctionListString = localStorage.getItem("auctionlist");
+  const auctionListString = localStorage.getItem(AUCTION_LIST);
   const auctionList = auctionListString && JSON.parse(auctionListString);
   const latestBidPrice = useMemo(() => {
     if (!auctionList?.length) {
@@ -14,16 +14,23 @@ function ProductItems({ element }: productItemsPropType) {
     const productDetails = auctionList.find(
       (item: auctionElementType) => item.id === element.id
     );
-    return productDetails?.bids[0].bid;
+    return productDetails?.bids[0].price;
   }, [auctionList, element]);
+
   return (
     <div className="w-[269px] h-[348px] border-[1px] flex flex-col">
       <span className="font-bold text-[20px] leading-[30px] font-poppins text-left ml-[10px]">
         {element.features}
       </span>
-      <span className="font-bold text-[14px] leading-[21px] text-[#90a3bf] text-left ml-[10px]">
-        {element.location}
-      </span>
+      <div className="flex justify-between">
+        <span className="font-bold text-[14px] leading-[21px] text-[#90a3bf] text-left ml-[10px]">
+          {element.location}
+        </span>
+        <span className="font-bold text-[14px] leading-[21px] text-[#90a3bf] text-left mr-[10px]">
+          House no: {element.id}
+        </span>
+      </div>
+
       <div
         className="w-[269px] h-[186px] rounded-[6px] mt-[20px]"
         style={{
@@ -43,7 +50,7 @@ function ProductItems({ element }: productItemsPropType) {
                   : "font-normal text-[14px] whitespace-nowrap"
               }`}
             >
-              ${latestBidPrice || "Bid Not Yet Started"}
+              ${latestBidPrice || "0 Bid Not Yet Started"}
             </span>
           }
 
@@ -69,5 +76,3 @@ function ProductItems({ element }: productItemsPropType) {
 }
 
 export default ProductItems;
-
-

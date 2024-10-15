@@ -17,7 +17,7 @@ function InitialPage() {
         </div>
         <div className="flex justify-center items-center content-center gap-[16px] self-stretch flex-wrap">
           {users.map((element, index) => (
-            <Users element={element} key={index} />
+            <Users user={element} key={index} />
           ))}
 
           <div className="flex p-[16px] flex-col items-center gap-[13px] rounded-[23px] bg-white">

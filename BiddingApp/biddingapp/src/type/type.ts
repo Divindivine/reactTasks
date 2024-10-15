@@ -1,5 +1,5 @@
 export type eachCurrentUserPropType = {
-  element: currentUserPropType;
+  user: currentUserPropType;
 };
 
 export type currentUserPropType = {
@@ -25,11 +25,13 @@ export type productElementPropType = {
   image: string;
 };
 
-export type bidsPropType = {
+export type bidsPropType = bidsElementPropType[];
+
+export type bidsElementPropType = {
   name: string;
   photo: String;
-  bid: number;
-}[];
+  price: number;
+}
 
 export type auctionListType = {
   id: number;

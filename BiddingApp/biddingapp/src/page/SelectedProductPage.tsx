@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import BackButton from "../components/BackButton";
+import BiddersList from "../components/BiddersList";
+import SpecificProductDetail from "../components/SpecificProductDetail";
 import {
   auctionElementType,
   auctionListType,
   currentUserPropType,
-  notificationElementType,
   productElementPropType,
 } from "../type/type";
-import BiddersList from "../components/BiddersList";
-import SpecificProductDetail from "../components/SpecificProductDetail";
-import BackButton from "../components/BackButton";
 
 function SelectedProductPage() {
   const { state } = useLocation();
@@ -23,10 +22,9 @@ function SelectedProductPage() {
   let bid = 0;
   auctionList.map((product: auctionElementType) => {
     if (product.id === currentProduct.id) {
-      bid = product.bids[0].bid;
+      bid = product.bids[0].price;
     }
   });
-
   const currentUserString = localStorage.getItem("currentUser");
   const currentUser: currentUserPropType =
     currentUserString && JSON.parse(currentUserString);
@@ -47,62 +45,30 @@ function SelectedProductPage() {
           {
             name: currentUser.name,
             photo: currentUser.image,
-            bid: amount,
+            price: amount,
           },
         ];
         const temp1 = currentProduct.id;
         auctionList.push({ id: temp1, bids: temp2 });
-        localStorage.setItem("auctionlist", JSON.stringify(auctionList));
       } else {
         auctionList.map((element: auctionElementType) => {
           if (element.id === currentProduct.id) {
             element.bids.push({
               name: currentUser.name,
               photo: currentUser.image,
-              bid: amount,
+              price: amount,
             });
           }
-          element.bids.sort((a, b) => b.bid - a.bid);
+          element.bids.sort((a, b) => b.price - a.price);
         });
-        localStorage.setItem("auctionlist", JSON.stringify(auctionList));
       }
-      const storedNotificationString = localStorage.getItem("bidNotification");
-      let storedNotifications =
-        storedNotificationString && JSON.parse(storedNotificationString);
-      console.log(storedNotifications);
-      const contains =
-        storedNotifications &&
-        storedNotifications.some(
-          (element: notificationElementType) =>
-            element.name === currentUser.name
-        );
-
-      if (contains) {
-        storedNotifications.map((element: notificationElementType) => {
-          if (element.name === currentUser.name) {
-            element.history.push(
-              `${currentUser.name} had bidded ${amount} fot the house having house no:${product.id}`
-            );
-          }
-        });
-      } else {
-        if (storedNotifications === null) storedNotifications = [];
-        const item1 = currentUser.name;
-        const item2 = [
-          `${currentUser.name} had bidded ${amount} fot the house having house no:${product.id}`,
-        ];
-        if (storedNotificationString?.length)
-          storedNotifications.push({ name: item1, history: item2 });
-      }
-      localStorage.setItem(
-        "bidNotification",
-        JSON.stringify(storedNotifications)
-      );
+      localStorage.setItem("auctionlist", JSON.stringify(auctionList))
       window.location.reload();
     } else {
       alert("please enter amount more than the currentbid");
     }
   };
+
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[#f0f4fb]">
       <div className="flex gap-[20px]">
@@ -116,11 +82,11 @@ function SelectedProductPage() {
               backgroundSize: "cover",
             }}
           ></div>
-          <BackButton page={"/products"}/>
+          <BackButton page={"/products"} />
         </div>
         <div className="w-[427px] flex flex-col font-poppins text-left ">
           <SpecificProductDetail currentProduct={currentProduct} bid={bid} />
-          <div className="flex flex-col max-h-[300px] overflow-scroll">
+          <div className="flex flex-col max-h-[300px] overflow-y-auto">
             <BiddersList
               auctionList={auctionList}
               currentProduct={currentProduct}
