@@ -3,10 +3,11 @@ import BackButton from "../components/BackButton";
 import Header from "../components/Header";
 import ProductItems from "../components/ProductItems";
 import { products } from "../data/products";
+import { CURRENT_USER } from "../constants";
 
 function HomePage() {
   const [notification, setnotification] = useState(false);
-  const currentUser = localStorage.getItem("currentUser");
+  const currentUser = localStorage.getItem(CURRENT_USER);
 
   if (!currentUser) {
     return (
@@ -32,4 +33,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

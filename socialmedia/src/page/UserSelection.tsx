@@ -1,40 +1,31 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { superHeroElementType } from "../type/type";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 
+const queryFun = async () => {
+  const response = await fetch("https://gorest.co.in/public/v2/users");
+  return response.json();
+};
 function UserSelection() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/superheroes")
-      .then((res) => {
-        setData(res.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setIsLoading(false);
-      });
-  }, []);
-
-  if (isLoading) {
-    return <h2>Loading</h2>;
-  }
-
-  if (error) {
-    return <h2>{error}</h2>;
-  }
-
+  // const {isPending, error, data} = useQuery({
+  //   queryKey: ['users'],
+  //   queryFn: ()=>{
+  //     fetch('https://gorest.co.in/public/v2/users').then((res) => res.json())
+  //   }
+  // })
+  const { isPending, error, data } = useQuery({
+    queryKey: ["users"],
+    queryFn: queryFun,
+  });
+  console.log(data);
+  if (isPending) return <span>loading</span>;
+  if (error) return <span>an Error occured:</span>;
   return (
-    <div className="w-screen h-screen bg-white">
-      {data.map((hero: superHeroElementType) => {
-        return <div key={hero.name}>{hero.name}</div>;
-      })}
+    <div>
+      <h1>{data.name}</h1>
     </div>
   );
 }
 
 export default UserSelection;
+
+

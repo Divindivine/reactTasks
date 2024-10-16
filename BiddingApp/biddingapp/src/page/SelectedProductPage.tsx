@@ -9,11 +9,12 @@ import {
   currentUserPropType,
   productElementPropType,
 } from "../type/type";
+import { AUCTION_LIST, CURRENT_USER } from "../constants";
 
 function SelectedProductPage() {
   const { state } = useLocation();
   const currentProduct: productElementPropType = state;
-  const auctionListString = localStorage.getItem("auctionlist");
+  const auctionListString = localStorage.getItem(AUCTION_LIST);
   const auctionList: auctionListType = auctionListString
     ? JSON.parse(auctionListString)
     : [];
@@ -25,7 +26,7 @@ function SelectedProductPage() {
       bid = product.bids[0].price;
     }
   });
-  const currentUserString = localStorage.getItem("currentUser");
+  const currentUserString = localStorage.getItem(CURRENT_USER);
   const currentUser: currentUserPropType =
     currentUserString && JSON.parse(currentUserString);
   const handleBid = (
@@ -33,13 +34,13 @@ function SelectedProductPage() {
     product: productElementPropType
   ) => {
     if (amount && typeof bid === "number") {
-      if (amount > bid) isTrue = true;
-      else isTrue = false;
+      if (amount > bid) {
+        isTrue = true;
+      }
     }
 
     if (isTrue && amount !== undefined) {
       const exists = auctionList.some((obj) => obj.id === currentProduct.id);
-
       if (auctionList.length === 0 || exists === false) {
         const temp2 = [
           {
@@ -62,7 +63,7 @@ function SelectedProductPage() {
           element.bids.sort((a, b) => b.price - a.price);
         });
       }
-      localStorage.setItem("auctionlist", JSON.stringify(auctionList))
+      localStorage.setItem(AUCTION_LIST, JSON.stringify(auctionList));
       window.location.reload();
     } else {
       alert("please enter amount more than the currentbid");

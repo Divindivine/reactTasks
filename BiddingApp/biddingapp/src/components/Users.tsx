@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
-import { eachCurrentUserPropType } from "../type/type";
+import { currentUserPropType, eachCurrentUserPropType } from "../type/type";
 
 function Users({ user }: eachCurrentUserPropType) {
   const usercontext = useContext(UserContext);
-  const createCurrentUser = (user: { name: string; image: string }) => {
+  const createCurrentUser = (user: currentUserPropType) => {
     usercontext?.setcurrentUser({
       name: user.name,
       image: user.image,

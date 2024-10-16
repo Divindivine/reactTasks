@@ -1,10 +1,9 @@
 import { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 import { AUCTION_LIST } from "../constants";
 import { auctionElementType, productItemsPropType } from "../type/type";
+import BidItemStock from "./BidItemStock";
 
 function ProductItems({ element }: productItemsPropType) {
-  const navigate = useNavigate();
   const auctionListString = localStorage.getItem(AUCTION_LIST);
   const auctionList = auctionListString && JSON.parse(auctionListString);
   const latestBidPrice = useMemo(() => {
@@ -57,18 +56,7 @@ function ProductItems({ element }: productItemsPropType) {
           <span className="font-semibold text-[14px]">Current Bid</span>
         </div>
         <div>
-          {element.sold ? (
-            <div className="w-[116px] h-[44px] rounded-[4px] bg-slate-100 mt-[20px] flex items-center justify-center">
-              <span>Sold Out</span>
-            </div>
-          ) : (
-            <button
-              className="w-[116px] h-[44px] rounded-[4px] bg-black mt-[20px]"
-              onClick={() => navigate("/bidnow", { state: element })}
-            >
-              <span className="text-white">Place Bid</span>
-            </button>
-          )}
+          <BidItemStock element={element} />
         </div>
       </div>
     </div>
