@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.3.1",
     "add": "^2.0.6",
     "axios": "^1.7.7",
+    "formik": "^2.4.6",
     "json-server": "^1.0.0-beta.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

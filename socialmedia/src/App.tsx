@@ -1,16 +1,14 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import React from 'react'
-import UserSelection from './page/UserSelection';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import UserSelection from "./page/UserSelection";
 
-
-
+const queryClient = new QueryClient();
 
 function App() {
   return (
-
+    <QueryClientProvider client={queryClient}>
       <UserSelection />
-  
-  )
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;

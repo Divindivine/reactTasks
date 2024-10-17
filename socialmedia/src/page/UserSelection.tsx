@@ -1,31 +1,59 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import { QueryClient, useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { getUsers } from "../api/getUsers";
+import NewUserForm from "../components/NewUserForm";
+import UsersList from "../components/UsersList";
+import { eachUserDataType } from "../type/type";
 
-const queryFun = async () => {
-  const response = await fetch("https://gorest.co.in/public/v2/users");
-  return response.json();
-};
 function UserSelection() {
-  // const {isPending, error, data} = useQuery({
-  //   queryKey: ['users'],
-  //   queryFn: ()=>{
-  //     fetch('https://gorest.co.in/public/v2/users').then((res) => res.json())
-  //   }
-  // })
-  const { isPending, error, data } = useQuery({
+  const queryClient = new QueryClient();
+
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["users"],
-    queryFn: queryFun,
+    queryFn: getUsers,
   });
-  console.log(data);
-  if (isPending) return <span>loading</span>;
-  if (error) return <span>an Error occured:</span>;
+
+  const [showNewUserForm, setShowNewUserForm] = useState(false);
+
+  if (isLoading) {
+    return <div>Loading users...</div>;
+  }
+  if (isError) {
+    return <div>Error loading users</div>;
+  }
   return (
-    <div>
-      <h1>{data.name}</h1>
+    <div className="w-screen bg-[#F0F8FF] h-screen pt-[100px]">
+      <div className="flex flex-col gap-[8px] items-center">
+        <span className="font-poppins text-[24px]">Choose an account</span>
+        <span className="font-poppins text-[16px]">
+          to continue to <span className="text-[#00308F]">SocialMedia</span>
+        </span>
+      </div>
+      <div
+        className="flex flex-col items-center mt-[50px] h-[300px] overflow-y-scroll"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {data.map((user: eachUserDataType) => (
+          <UsersList key={user.id} user={user} />
+        ))}
+      </div>
+      <div className="w-full flex justify-center items-center mt-[25px]">
+        <span
+          className="text-[20px] font-[poppins] items-center flex cursor-pointer"
+          onClick={() => setShowNewUserForm(true)}
+        >
+          <span className="text-[40px] mr-[20px]">+</span> Add Profile
+        </span>
+      </div>
+      {showNewUserForm && (
+        <NewUserForm setShowNewUserForm={setShowNewUserForm} />
+      )}
     </div>
   );
 }
 
 export default UserSelection;
+
+
 
 
