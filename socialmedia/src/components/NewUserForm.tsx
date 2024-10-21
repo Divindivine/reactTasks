@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { addNewUser } from "../api/addNewUser";
 import { eachUserDataType, newUserFormPropType } from "../type/type";
+import { validate } from "../utils/common";
 
 function NewUserForm({ setShowNewUserForm }: newUserFormPropType) {
   const queryClient = useQueryClient();
@@ -14,37 +15,15 @@ function NewUserForm({ setShowNewUserForm }: newUserFormPropType) {
       console.log("Error adding user:", error);
     },
   });
-  console.log(Math.floor(100000 + Math.random() * 900000));
-  const validate = (values: {
-    id: number;
-    name: string;
-    email: string;
-    gender: string;
-    status: string;
-  }) => {
-    const errors: {
-      name?: string;
-      email?: string;
-      gender?: string;
-    } = {};
 
-    if (!values.name) {
-      errors.name = "Name is required";
-    }
-    if (!values.email) {
-      errors.name = "Email is required";
-    }
-    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "invalid email format";
-    }
-    if (!values.gender) {
-      errors.gender = "Gender is required";
-    }
-    if (values.gender !== "male" && values.gender !== "female") {
-      errors.gender = "Invalid gender";
-    }
-    return errors;
+  const initialValues = {
+    id: Math.floor(100000 + Math.random() * 900000),
+    name: "",
+    email: "",
+    gender: "",
+    status: "active",
   };
+
   const onSubmit = (value: eachUserDataType) => {
     mutation.mutate({ ...value });
     setShowNewUserForm(false);
@@ -60,13 +39,7 @@ function NewUserForm({ setShowNewUserForm }: newUserFormPropType) {
             <span className="text-white font-poppins">Back</span>
           </button>
           <Formik
-            initialValues={{
-              id: Math.floor(100000 + Math.random() * 900000),
-              name: "",
-              email: "",
-              gender: "",
-              status: "active",
-            }}
+            initialValues={initialValues}
             validate={validate}
             onSubmit={onSubmit}
           >

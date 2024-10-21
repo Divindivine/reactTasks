@@ -12,6 +12,7 @@ function UserSelection() {
     queryKey: ["users"],
     queryFn: getUsers,
   });
+  console.log(data);
 
   const [showNewUserForm, setShowNewUserForm] = useState(false);
 
@@ -53,7 +54,3 @@ function UserSelection() {
 }
 
 export default UserSelection;
-
-
-
-

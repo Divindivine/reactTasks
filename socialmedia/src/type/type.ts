@@ -13,5 +13,15 @@ export type userListPropType = {
 };
 
 export type newUserFormPropType = {
-  setShowNewUserForm: React.Dispatch<React.SetStateAction<boolean>>
+  setShowNewUserForm: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type editUserPropType = {
+  id: number;
+  setShowEditField: React.Dispatch<React.SetStateAction<boolean>>
+};
+
+export type currentUserDetailsPropType = {
+  currentUser: eachUserDataType;
+  setShowCurrentUserDetails: React.Dispatch<React.SetStateAction<boolean>>
 }
