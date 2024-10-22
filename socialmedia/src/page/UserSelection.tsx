@@ -1,4 +1,4 @@
-import { QueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getUsers } from "../api/getUsers";
 import NewUserForm from "../components/NewUserForm";
@@ -6,13 +6,10 @@ import UsersList from "../components/UsersList";
 import { eachUserDataType } from "../type/type";
 
 function UserSelection() {
-  const queryClient = new QueryClient();
-
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["users"],
     queryFn: getUsers,
   });
-  console.log(data);
 
   const [showNewUserForm, setShowNewUserForm] = useState(false);
 
@@ -35,7 +32,7 @@ function UserSelection() {
         style={{ scrollbarWidth: "none" }}
       >
         {data.map((user: eachUserDataType) => (
-          <UsersList key={user.id} user={user} />
+          <UsersList key={user.id} user={user} users={data} />
         ))}
       </div>
       <div className="w-full flex justify-center items-center mt-[25px]">
@@ -43,7 +40,7 @@ function UserSelection() {
           className="text-[20px] font-[poppins] items-center flex cursor-pointer"
           onClick={() => setShowNewUserForm(true)}
         >
-          <span className="text-[40px] mr-[20px]">+</span> Add Profile
+          <span className="text-[40px] mr-[20px]">+</span>Add Profile
         </span>
       </div>
       {showNewUserForm && (

@@ -1,9 +1,6 @@
-import { QueryClient } from "@tanstack/react-query";
-import UserSelection from "./page/UserSelection";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./page/HomePage";
-
-const queryClient = new QueryClient();
+import UserSelection from "./page/UserSelection";
 
 function App() {
   return (

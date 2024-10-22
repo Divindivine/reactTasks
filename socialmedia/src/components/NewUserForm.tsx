@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import { addNewUser } from "../api/addNewUser";
 import { eachUserDataType, newUserFormPropType } from "../type/type";
-import { validate } from "../utils/common";
+import FormikForm from "./FormikForm";
 
 function NewUserForm({ setShowNewUserForm }: newUserFormPropType) {
   const queryClient = useQueryClient();
@@ -38,38 +37,7 @@ function NewUserForm({ setShowNewUserForm }: newUserFormPropType) {
           >
             <span className="text-white font-poppins">Back</span>
           </button>
-          <Formik
-            initialValues={initialValues}
-            validate={validate}
-            onSubmit={onSubmit}
-          >
-            <Form>
-              <div className="flex flex-col mt-[100px] gap-[40px]">
-                <div className="flex gap-[10px]">
-                  <label>name</label>
-                  <Field className="border-[2px]" name="name" type="text" />
-
-                  <ErrorMessage name="name" />
-                </div>
-                <div className="flex gap-[10px]">
-                  <label>email</label>
-                  <Field className="border-[2px]" name="email" type="email" />
-                </div>
-                <div className="flex gap-[10px]">
-                  <label>gender</label>
-                  <Field className="border-[2px]" name="gender" type="text" />
-                </div>
-                <div className="flex w-full justify-center">
-                  <button
-                    className="border-[2px] text-white w-[80px] h-[35px] bg-black rounded-[8px]"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </Form>
-          </Formik>
+          <FormikForm initialValues={initialValues} onSubmit={onSubmit} />
         </div>
       </div>
     </div>

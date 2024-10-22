@@ -1,4 +1,3 @@
-import React from "react";
 import leftarrow from "../img/leftArrow.png";
 import { currentUserDetailsPropType } from "../type/type";
 
@@ -23,4 +22,3 @@ function CurrentUserDetails({
 }
 
 export default CurrentUserDetails;
-
