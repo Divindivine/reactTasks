@@ -1,7 +1,7 @@
 import axios from "axios";
 import { eachCommentType } from "../type/type";
 
-export async function addComments(id: number, comment: eachCommentType) {
+export async function addComments(id: number, comment: string) {
   const response = await axios.post(
     `https://gorest.co.in/public/v2/users/${id}/comments`,
     comment,

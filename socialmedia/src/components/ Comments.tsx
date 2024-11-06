@@ -12,7 +12,7 @@ function Comments({ post }: commentsPropType) {
   const [newlyAddedComment, setNewlyAddedComment] = useState("");
 
   const mutation = useMutation({
-    mutationFn: (newComment:eachCommentType) => addComments(1, newComment),
+    mutationFn: (newComment:string) => addComments(1, newComment),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
