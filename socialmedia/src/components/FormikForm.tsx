@@ -19,7 +19,7 @@ function FormikForm({ initialValues, onSubmit }: formikFormPropType) {
           <div className="flex gap-[10px]">
             <label>email</label>
             <Field className="border-[2px]" name="email" type="email" />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email"/>
           </div>
           <div className="flex gap-[10px]">
             <label>gender</label>
