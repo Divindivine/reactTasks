@@ -3,9 +3,9 @@ import { userImages } from "../images/userImage";
 import deleteIcon from "../images/delete.png";
 import editIcon from "../images/edit.webp";
 import { useDeleteUser } from "../api/useDeleteUser";
-import { usePutUser } from "../api/usePutUser";
 import { useState } from "react";
 import EditUserForm from "./EditUserForm";
+import { useNavigate } from "react-router-dom";
 
 function ShowUsers({ data }: ShowUsersPropType) {
   const deleteUserMutation = useDeleteUser();
@@ -16,6 +16,12 @@ function ShowUsers({ data }: ShowUsersPropType) {
   const afterEditClicked = (user: EachUserDataType) => {
     setCurrentEditingUser(user);
     setShowUserEditForm(true);
+  };
+  const navigate = useNavigate();
+  const profileClicked = (user: EachUserDataType, index: number) => {
+    navigate("/");
+    user.imageID = index;
+    localStorage.setItem("currentUser", JSON.stringify(user));
   };
   return (
     <>
@@ -28,7 +34,10 @@ function ShowUsers({ data }: ShowUsersPropType) {
             key={userDetail.id}
             className="flex items-center p-[10px] border-b-[1px] border-black justify-between"
           >
-            <div className="flex gap-[10px] items-center bg-slate-200 rounded-[10px] p-[10px] cursor-pointer">
+            <div
+              className="flex gap-[10px] items-center bg-slate-200 rounded-[10px] p-[10px] cursor-pointer"
+              onClick={() => profileClicked(userDetail, index)}
+            >
               <div
                 className="w-[60px] h-[60px] rounded-full"
                 style={{

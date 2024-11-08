@@ -4,6 +4,7 @@ export type EachUserDataType = {
   email: string;
   gender: string;
   status: string;
+  imageID?: number;
 };
 
 export type ShowUsersPropType = {
@@ -26,6 +27,22 @@ export type ValidationErrorType = {
 };
 
 export type EditUserFormPropType = {
-  currentEditingUser: EachUserDataType,
+  currentEditingUser: EachUserDataType;
   setShowUserEditForm: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
+
+export type CurrentUserPropType = {
+  currentUser: EachUserDataType;
+};
+
+export type PostFieldPropType = {
+  currentUser: EachUserDataType;
+};
+
+export type eachPostDataType = {
+  id: number;
+  user_id: number;
+  title: string;
+  body: string;
+};
+
