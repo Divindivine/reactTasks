@@ -31,17 +31,17 @@ function HomePage() {
         ></div>
         <span className="text-[40px] font-mono text-white">MediaMorphic</span>
       </div>
-      <PostField currentUser={currentUser}/>
-      {profileClicked && 
-      <div className="absolute top-2 left-2 w-1/6 h-1/3 bg-white rounded-[10px] flex flex-col p-[5px] border-[10px] border-black">
-        <div className="w-full" onClick={()=> setProfileClicked(false)}><BackButton/></div>
-        <CurrentUserProfile currentUser={currentUser}/>
-      </div>
-      }
+      <PostField currentUser={currentUser} />
+      {profileClicked && (
+        <div className="absolute top-2 left-2 w-1/6 h-1/3 bg-white rounded-[10px] flex flex-col p-[5px] border-[10px] border-black">
+          <div className="w-full" onClick={() => setProfileClicked(false)}>
+            <BackButton />
+          </div>
+          <CurrentUserProfile currentUser={currentUser} />
+        </div>
+      )}
     </div>
   );
 }
 
 export default HomePage;
-
-
