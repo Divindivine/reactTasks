@@ -46,3 +46,23 @@ export type eachPostDataType = {
   body: string;
 };
 
+export type PostOwnerPropType = {
+  userID: number;
+  currentUser: EachUserDataType;
+};
+
+export type CommentFieldPropType = {
+  postId: number;
+};
+
+export type CommentPropType = {
+  postId: number;
+};
+
+export type EachCommentType = {
+  id: number;
+  post_id: number;
+  name: string;
+  email: string;
+  body: string;
+};

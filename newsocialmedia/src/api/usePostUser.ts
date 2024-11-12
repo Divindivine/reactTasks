@@ -7,8 +7,7 @@ export const usePostUser = () => {
   return useMutation({
     mutationFn: postUser,
     onError: (error) => alert(`error on adding new user \n error: ${error}`),
-    onSuccess: (newUser) => {
-      console.log(newUser);
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
   });

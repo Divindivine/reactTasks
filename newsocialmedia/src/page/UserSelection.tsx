@@ -9,19 +9,9 @@ function UserSelection() {
 
   if (isLoading) {
     return (
-      <div className="w-screen h-screen flex justify-center items-center hover: pointer-events-none">
-        <iframe
-          src="https://giphy.com/embed/SLgaYdpp6UwrczXr7V"
-          width="480"
-          height="360"
-          allowFullScreen
-        ></iframe>
-        <p>
-          <a href="https://giphy.com/gifs/shalymar-shagarita-shalymarrivera-SLgaYdpp6UwrczXr7V">
-            via GIPHY
-          </a>
-        </p>
-      </div>
+      <div className="w-screen h-screen flex justify-center items-center">
+      <span className="text-[40px]">Loading....</span>
+    </div>
     );
   }
 
