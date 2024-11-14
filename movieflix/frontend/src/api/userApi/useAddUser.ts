@@ -10,7 +10,7 @@ export const useAddUser = () => {
 };
 
 async function addUser(userData: userDataType) {
-  console.log(userData)
+  console.log(userData);
   const response = await axios.post(
     "http://localhost:5000/users/new",
     userData

@@ -7,7 +7,7 @@ export const useGetUser = () => {
     mutationFn: getUser,
     onError: (error) => alert(`No match in database`),
     onSuccess(data) {
-      localStorage.setItem("currentUser", JSON.stringify(data));
+      localStorage.setItem("currentUser", JSON.stringify(data[0]));
     },
   });
 };

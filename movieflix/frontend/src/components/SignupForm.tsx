@@ -48,7 +48,7 @@ function SignupForm({ setWantSign }: LoginFormPropType) {
   }
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
+    <div className="w-screen h-screen flex justify-center items-center font-poppins">
       <div className="w-1/4 bg-black flex flex-col p-[40px] py-[100px] rounded-[30px] text-white text-[20px]">
         <span className="text-center text-[34px] font-semibold">
           Create an account
