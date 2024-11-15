@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetUser } from "../api/userApi/useGetUser";
+import { useGetUser } from "../api/database/users/useGetUser";
 import show from "../img/show.png";
 import hide from "../img/hide.png";
 import { useNavigate } from "react-router-dom";

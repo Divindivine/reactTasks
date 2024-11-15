@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { userDataType } from "../../type/type";
+import { userDataType } from "../../../type/type";
 import axios from "axios";
 
 export const useAddUser = () => {
@@ -10,9 +10,8 @@ export const useAddUser = () => {
 };
 
 async function addUser(userData: userDataType) {
-  console.log(userData);
   const response = await axios.post(
-    "http://localhost:5000/users/new",
+    "http://localhost:5000/movieflix/users/new",
     userData
   );
   return response.data;

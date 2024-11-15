@@ -5,7 +5,7 @@ import {
   userDataType,
   ValidationErrorType,
 } from "../type/type";
-import { useAddUser } from "../api/userApi/useAddUser";
+import { useAddUser } from "../api/database/users/useAddUser";
 import show from "../img/show.png";
 import hide from "../img/hide.png";
 

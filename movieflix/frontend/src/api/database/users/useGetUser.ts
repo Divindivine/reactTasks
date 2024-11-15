@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { LoginUserDataType } from "../../type/type";
+import { LoginUserDataType } from "../../../type/type";
 
 export const useGetUser = () => {
   return useMutation({
@@ -13,6 +13,9 @@ export const useGetUser = () => {
 };
 
 async function getUser(userData: LoginUserDataType) {
-  const response = await axios.post("http://localhost:5000/user", userData);
+  const response = await axios.post(
+    "http://localhost:5000/movieflix/user",
+    userData
+  );
   return response.data;
 }
