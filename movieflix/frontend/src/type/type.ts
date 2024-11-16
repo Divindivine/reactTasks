@@ -1,3 +1,5 @@
+import { UseQueryResult } from "@tanstack/react-query";
+
 export type LoginUserDataType = {
   email: string;
   password: string;
@@ -24,7 +26,7 @@ export type currentUserType = {
   user_name: string;
   email: string;
   password: string;
-}
+};
 
 export type MovieType = {
   adult: boolean;
@@ -51,6 +53,7 @@ export type SpecificMovieDetailPropType = {
   setViewMovieDetail: React.Dispatch<React.SetStateAction<boolean>>;
   clickedMovie: MovieType;
   currentUser: currentUserType;
+  favorites:  UseQueryResult<any, Error>
 };
 
 export type FavoritesDataType = {
@@ -60,4 +63,18 @@ export type FavoritesDataType = {
   overview: string;
   user_id: number;
   id: number;
+};
+
+export type FavoritesMoviePropType = {
+  setFavClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  currentUser: currentUserType;
+  favorites: UseQueryResult<any, Error>
+};
+
+export type HeaderPropType = {
+  currentUser: currentUserType;
+  viewProfile: boolean;
+  setViewProfile: React.Dispatch<React.SetStateAction<boolean>>;
+  setFavClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  favorites:  UseQueryResult<any, Error>
 };

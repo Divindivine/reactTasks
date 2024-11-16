@@ -56,10 +56,26 @@ app.post("/movieflix/favorites/user", (request, response) => {
   );
 });
 
-app.get("/movieflix/favorites/total/:user_id", (request, response) => {
+app.get("/movieflix/:user_id/favoritemovies", (request, response) => {
   const user_id = request.params.user_id;
-  pool.query(queries.getNumberOfFavorites, [user_id], (error, result) => {
+  pool.query(queries.getFavorites, [user_id], (error, result) => {
     if (error) throw error;
     response.send(result.rows);
   });
 });
+
+app.delete(
+  "/movieflix/:user_id/favoritemovies/:movie_id",
+  (request, response) => {
+    const user_Id = request.params.user_id;
+    const Movie_id = request.params.movie_id;
+    pool.query(
+      queries.removeFromFavorites,
+      [user_Id, Movie_id],
+      (error, result) => {
+        if (error) throw error;
+        response.send("succesfully removed from favorites");
+      }
+    );
+  }
+);

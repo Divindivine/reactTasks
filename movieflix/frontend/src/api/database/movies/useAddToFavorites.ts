@@ -1,12 +1,15 @@
 import axios from "axios";
 import { FavoritesDataType } from "../../../type/type";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useAddToFavorites = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: addToFavorites,
     onError: (error) => alert(`error: ${error}`),
-    onSuccess: () => alert("succesfully added to favorites"),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["favorites"] });
+    },
   });
 };
 
@@ -17,3 +20,5 @@ async function addToFavorites(movie: FavoritesDataType) {
   );
   return response.data;
 }
+
+
